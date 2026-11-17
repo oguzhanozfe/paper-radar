@@ -1,0 +1,101 @@
+id,relevant,title
+2611.14603,0,An Eyring-Kramers Formula for Singular Wells
+2611.13572,0,Market-Conditioned JEPA: Learning from Unpredictable Market Shocks
+2611.15315,1,MIGRO: A Decoupled and Portable Long-Term Memory System for Language Models
+2611.15051,0,A Time-Frequency-Condition Multimodal Fusion Foundation Model for Universal Rotating-Machinery Fault Diagnosis under Multi-Element Heterogeneous Scenarios
+2611.15155,0,PRELUDE: Separating Common Components from Target-Specific Dependencies for Multivariate Time Series Forecasting
+2611.16356,0,DIAGNO: Diagonal Spherical Neural Operators for Heterogeneous Earth Dynamics Modeling
+2611.15981,0,DexRemo: A Force-Sensing Hand Platform and Task Suite for Contact-Rich Removal Manipulation
+2611.15170,0,An Experience Report on Teaching Students to Evaluate AI Agent Skills as Authorization Decisions
+2611.16361,0,MutAtlas: A PDB-Wide Energy-Guided Atlas of Protein Mutation Effects
+2611.17529,0,Learning Latent Goal Costs for Visual World-Model Planning with an Expanding Curriculum
+2611.13868,0,"Mechanistic Interpretability of Deep Neural Networks: Methods, Frameworks, and Perspectives"
+2611.13517,0,Differentiable Filtering for Inertial Odometry
+2611.16455,0,Rational Alignments of Superintelligences via Debates
+2611.15895,0,Your Hypergradient is Skewed: Antithetic Neumann Estimation for Bilevel Optimization
+2611.15777,1,SO-Arena: Benchmarking the Capability Spectrum and Reliability of System One Models
+2611.17650,0,Classifier-Guided Latent Diffusion for Small-Molecule Generation
+2611.14328,0,Forward-Value Discretization: Faster Stochastic Diffusion Sampling Without High-Order Approximation
+2611.17856,0,DECODE: Diagnosing Interpretability Failures in Automated Interpretation Process
+2611.16913,0,CADET: Construction of PCB Routing Instances with Executable Demonstrations
+2611.17577,0,Fair and Efficient Distributed EV Charging Coordination Using Threshold Cryptography and Machine Learning
+2611.14853,0,Can I join you? Extended Social Force Based Model with Predictive Control and Barrier Functions for Humanoid Group Repositioning Amidst Obstacles
+2611.14425,0,Quantifying the Sampling Frequency Invariance of Time-Series Foundation Models for Sensor Data Applications
+2611.15990,0,Characterizing the Edge of Stability in Variational Training Without Priors
+2611.18035,0,RL$^{\mathrm{RT}}$: On-Device Reinforcement Learning Runtime
+2611.18469,0,Contrastive latent representation learning with denoising score matching
+2611.18078,0,TelePhysica: Agentic Reconstruction of Physically Interactive Scenes
+2611.14483,0,Mechanistic Interpretability Needs a Logic of Inference
+2611.15329,0,"TabOmics: A Small, Open Tabular Foundation Model for Wide Omics Data"
+2611.18230,0,Personalization of Basic and Moral Values Guiding LLM-Controlled Assistant Robots
+2611.14804,0,GenPFN: An In-Context Tabular Foundation Model Approach for Augmenting Small Datasets in Engineering
+2611.18453,0,Black-Box Uncertainty Quantification for Large Language Models via Ensemble-of-Ensembles
+2611.15000,0,QSim-Arena: an evolving developer for quantum simulation advantage
+2611.17998,0,Understanding the limits of snapshot-based fault diagnosis in distribution networks
+2611.14126,0,Hierarchical Graph Representation Learning with Pooling-Induced Substructures
+2611.14415,0,Exploring Post-Hoc Disentanglement of Audio Foundation Models for Music Similarity
+2611.13941,0,PARDIG: Global Precipitation Estimates Learned from Sparse Satellite Observations
+2611.13990,0,"On the information rate of phones, syllables and words"
+2611.14051,0,Can KV Cache Be Reused Across Model Updates? A DeepSeek-V4-Flash Case Study
+2611.14467,0,A Theory of Policy Optimization in Post-Training: Coverage Collapse and Reference Resets
+2611.17834,0,PaperCritic: Training AI Reviewers to Assess the Soundness of Papers
+2611.14878,0,Hear What You Eat: In-Ear Passive Acoustic Sensing for Multi-task Dietary Monitoring
+2611.14357,0,The Unused Input: The Initial State as a Conditioning Interface for Recurrent TSFMs
+2611.18274,0,"Right Token, Right Time: From Per-Token Gating to Trajectory-Aware Activation Steering"
+2611.15925,0,ShadowBench: Exposing Lexical Anchoring and the Illusion of Forgetting in Large Language Models
+2611.18157,0,A Multi-Layered AI Pipeline for BPMN Generation from Natural Language
+2611.16003,0,Fit-LRP: Fitting Linear Relaxations to Polytopes for Neural Network Verification over Non-Convex Regions
+2611.16228,0,Indic-Task Gains and Regressions after Reinforcement Learning
+2611.13972,0,Data Quality Challenges in Multimodal Tourism Recommender Systems
+2611.13957,0,AVCC: Audio-Visual Conversation Corpus for Turn-Taking Prediction with a Human Benchmark
+2611.18333,0,Emulating physics-based XCO2 retrievals across OCO-2 viewing modes with compact neural networks
+2611.14811,0,Improved last-iterate bounds for SGD with and without replacement
+2611.16424,0,PhysCapBench: A Cross-Domain Benchmark for Physically Grounded Video Captioning
+2611.16375,0,Recursive State-Augmented Language Models: Persistent Latent-State Adaptation of Pretrained Language Models
+2611.14519,0,Medical Image Segmentation: Foundation Model Adaptation versus Task-Specific Training
+2611.15515,1,"Incentive-Responsive Agents: A Principal-Agent Framework, Metric Suite, and Runtime Architecture for Long-Lived Personal AI Agents"
+2611.17696,1,Co-Sight Harness: Externalized Control Assets and Deterministic Enforcement for Long-Horizon Business Agents
+2611.16718,0,MusicRWKV: A Multimodal RWKV Framework for Music Representation Learning
+2611.14284,0,Ninety-Six Ways to Measure a Scribe: Fragmented Evaluation of Ambient Scribes in Healthcare
+2611.14818,0,"What Do Tokenizer Comparisons Measure? Disentangling Granularity, Root Assignment, and Word-Level Readout across Amharic and Hausa"
+2611.16856,0,Sustainable Federated Fine-Tuning with LoRA: Environmental Impact and Performance Footprint
+2611.17867,1,UltraBERT-JEV: Encoder models for System One Applications
+2611.16031,0,Robustness Within a Fairness Budget: Parity Frontiers and Equal-Opportunity Reversal
+2611.17710,0,Cross-Linguistic Acoustic Biomarkers of Cognitive Impairment Across Interactive and Single-Speaker Speech Tasks
+2611.15073,0,When Does Causality Help in Multivariate Time-Series Anomaly Detection?
+2611.16345,0,DRAMA: Dissecting Attention Redundancy for Accelerating Multimodal Diffusion Large Language Models
+2611.18144,0,STAMP: Manufacturing-Informed Generative Design and Shape Optimization of Sheet Panels
+2611.18319,0,Learning Word-Level Explanations of Text Reuse in Latin Literature with Little Annotation
+2611.13534,0,Beyond the Log-Linear Frontier: Pre-Asymptotic Analysis of Finite-Budget Neural Scaling Laws
+2611.16726,0,From Data to Wisdom: Rethinking AI Through an Epistemic Lens
+2611.16608,0,Towards Democratising Low-Data Medical Image Classification: CPU-Trainable ZACH-ViT and Its Geometric Variants
+2611.14956,0,Binding Mode Matters: Hotspot-Aware Drug Discovery via Explorative Preferences
+2611.17239,1,When Both Sides Adapt: The Challenges of Evaluating Interactive LLM Systems
+2611.16466,1,How Should Planning Agents ReSHAPE Their Search Space?
+2611.17126,0,STeP-C: Real-Time Neural Compression for Distributed Fiber-Optic Sensing at Scale
+2611.17440,1,Interpreting Coding Agents Through Their Behavioral Trajectories
+2611.13454,1,SafeRoute-MAS: Coverage-Aware and Risk-Calibrated Message Routing for Multi-Agent Scientific Reasoning
+2611.15744,0,Latent Imagination for Parameterized Action Spaces
+2611.15569,0,TraceKV: Policy-Preserving Low-Rank KV Cache Compression for Reasoning Vision-Language Models
+2611.14900,0,Nested Ensemble Learning with Topological Data Analysis for Graph Classification and Regression
+2611.18272,0,From Bytes to Behavior: Request-Level Attribution from Live GPU Hidden States
+2611.17836,0,BLiMP-RO: A Benchmark of Linguistic Minimal Pairs for Romanian
+2611.14850,1,Effective Teacher Support for Reasoning Distillation
+2611.18464,0,"Typing Matters: Muscle, Language and Typing Behaviour in Live Keystroke Decoding from sEMG"
+2611.14374,0,Uncertainty-Aware Hybrid Offline Reinforcement Learning with Online Action Selection Enabled by Sparse Gaussian-Process Critics
+2611.17846,0,"Is Abliteration Getting Harder? Not Uniformly: Refusal Removal by Direction-Based Ablation and ARA in Heretic on the Qwen3.8, Gemma 4, Olmo 3.1 and Mistral Small 3.2 LLMs Versus Their Predecessors"
+2611.15568,1,"Can We Make an LLM Dumber, or Is It Just Playing Dumb? An Empirical Study of Believable Performance Throttling"
+2611.14901,1,Understanding the Effects of Multi-Agent Deliberation for Human-AI Decision-Making
+2611.15835,1,Controlling the Probability of Unknown Unknowns in Pre-Deployment Testing of AI Systems
+2611.14093,0,BODYinTRANSIT-Lab: A Multimodal Dataset for Investigating Sensory-Driven Transformations in Body Perception and Affective Experiences
+2611.16260,0,Low Language Transfer Speech-to-Text
+2611.13794,0,AnchorMTS: Multi-View Signal Representation and Forecast-Anchored Fusion for Long-Term Time-Series Forecasting
+2611.14963,0,GHA-SmellFix: Taking Action with Agentic LLMs for Detecting and Refactoring GitHub Actions Workflow Smells
+2611.16108,0,How Do People Debug Complex SQL Queries With LLMs? A Qualitative Study
+2611.17722,0,Federated Soft Poly-Level Learning Over a Distributed Network with Guaranteed Convergence
+2611.17870,0,OmniScore-Bench: Evaluating Vision-Language Models on Musical Score Reading
+2611.13755,0,A Hardware-Trained Generative Quantum Eigensolver for Sample-Based Quantum Diagonalization of Organotin Hydroxides up to 70 Qubits
+2611.17107,0,Disentangling Spurious Correlations: How IRM Handles Diverse Shortcuts in Text Classification
+2611.16642,0,Dataset Distillation via Drifting
+2611.14769,1,Leaderboard Hacking: Preference-Based Model Evaluations are Vulnerable to Manipulation
+2611.15162,0,"Stealthy, High-Impact False Data Injection Attacks in Smart Grid Using Physics-Constrained GAN with Limited System Knowledge"

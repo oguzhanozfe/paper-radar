@@ -1,0 +1,33 @@
+# Optional: build the weekly digest and commit it to digests/.
+# Disabled by default: it only runs when started by hand (Actions tab -> Run workflow).
+# To schedule it, uncomment the `schedule:` block.
+#
+# It needs an Ollama endpoint with the embedding and chat models. GitHub-hosted
+# runners have none, so either use a self-hosted runner that runs Ollama
+# (set `runs-on: self-hosted`) or point OLLAMA_HOST at a server you control
+# via a repository secret.
+name: Weekly digest
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 6 * * 1"   # Mondays 06:00 UTC
+permissions:
+  contents: write
+jobs:
+  digest:
+    runs-on: ubuntu-latest   # change to self-hosted if Ollama runs there
+    env:
+      OLLAMA_HOST: ${{ secrets.OLLAMA_HOST }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m paper_radar digest --days 7
+      - name: Commit digest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add digests/
+          git diff --cached --quiet || git commit -m "digest: $(date -u +%G-W%V)"
+          git push
