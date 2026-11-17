@@ -26,10 +26,11 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m paper_radar digest --days 7
+      - run: python -m paper_radar site   # refresh the GitHub Pages index in docs/
       - name: Commit digest
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add digests/
+          git add digests/ docs/
           git diff --cached --quiet || git commit -m "digest: $(date -u +%G-W%V)"
           git push

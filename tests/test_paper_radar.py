@@ -155,10 +155,6 @@ class TestEvalAndDigest(unittest.TestCase):
         self.assertNotIn("## RAG with evidence", m)  # only themes with top papers get a section
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class TestModels(unittest.TestCase):
     def test_fallback_and_cache(self):
         import tempfile
@@ -179,3 +175,40 @@ class TestModels(unittest.TestCase):
             self.assertEqual(calls, ["a", "b"])
         finally:
             models._post, models.LLM_MODELS, models.CACHE = saved
+
+
+class TestDemo(unittest.TestCase):
+    def test_replay_reproduces_committed_digest(self):
+        import contextlib
+        import io
+        import os
+        import tempfile
+        from paper_radar import demo
+        out, cwd = tempfile.mkdtemp(), os.getcwd()
+        try:
+            os.chdir(ROOT)
+            with contextlib.redirect_stdout(io.StringIO()) as said, contextlib.redirect_stderr(io.StringIO()):
+                demo.run("replay", out)
+        finally:
+            os.chdir(cwd)
+        self.assertIn("mode: replay (recorded", said.getvalue())
+        for ext in (".md", ".html"):
+            got = Path(out, demo.NAME + ext).read_text(encoding="utf-8")
+            self.assertEqual(got, (ROOT / "digests" / (demo.NAME + ext)).read_text(encoding="utf-8"))
+
+    def test_resolution_order(self):
+        import os
+        from unittest import mock
+        from paper_radar import demo
+        with mock.patch.dict(os.environ, {"GEMINI_API_KEY": "x"}):
+            self.assertEqual(demo.resolve("auto"), "gemini")
+        with mock.patch.dict(os.environ, {}, clear=True):
+            with mock.patch.object(demo, "ollama_ready", return_value=True):
+                self.assertEqual(demo.resolve("auto"), "ollama")
+            with mock.patch.object(demo, "ollama_ready", return_value=False):
+                self.assertEqual(demo.resolve("auto"), "replay")
+        self.assertEqual(demo.resolve("replay"), "replay")
+
+
+if __name__ == "__main__":
+    unittest.main()

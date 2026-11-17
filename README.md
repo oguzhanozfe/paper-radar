@@ -1,14 +1,38 @@
 # paper-radar
 
 A weekly arXiv digest ranked against an interest profile you write in Markdown.
-It fetches a week of new papers from the official arXiv API, keeps the ones closest to your
-profile by embedding similarity, has an LLM score those with a one-sentence reason, checks that
-the phrase it quotes really is in the abstract, and writes a Markdown and an email-ready HTML
-digest grouped by theme.
 
-Real output: [`digests/2026-11-13.md`](digests/2026-11-13.md) ([HTML](digests/2026-11-13.html)), built
-from the 254 papers submitted on 2026-11-13. It covers one day rather than a full week because the
-free-tier embedding quota ran out; see Known limits.
+## Try it
+
+- **Read a real digest, no install:** <https://oguzhanozfe.github.io/paper-radar/>. It is built from
+  the 254 papers submitted on 2026-11-13.
+
+  [![The 2026-11-13 digest](docs/screenshot.png)](https://oguzhanozfe.github.io/paper-radar/2026-11-13.html)
+
+- **Run it with no key** (Python 3.10+, standard library only):
+
+  ```bash
+  git clone https://github.com/oguzhanozfe/paper-radar && cd paper-radar
+  python -m paper_radar demo        # writes demo-out/2026-11-13.md and .html
+  ```
+
+  The demo ranks the bundled day of papers ([`demo/papers-2026-11-13.jsonl`](demo/papers-2026-11-13.jsonl))
+  and picks a model on its own:
+
+  1. If `GEMINI_API_KEY` is set, it uses Gemini.
+  2. Otherwise, if a local Ollama with `qwen3.5:9b` and `qwen3-embedding:0.6b` is running, it uses that.
+  3. Otherwise it replays the recorded run and says so: `mode: replay (recorded gemini:…, 2026-11-17)`.
+
+  The recording ([`demo/recorded.json`](demo/recorded.json)) holds each paper's embedding similarity
+  score and the LLM's replies from the run that produced the committed digest, so replay reproduces
+  that digest exactly. It finishes in under a second, and CI checks it on every push. It covers only
+  the bundled papers with the bundled `profile.md`. To rank with your own profile, use a real model.
+  A live Gemini run of the demo embeds 259 texts, about a quarter of the free tier's daily embedding
+  quota, and takes a few minutes, because embedding batches are spaced a minute apart.
+  `--mode gemini|ollama|replay` forces a lane. If a live lane fails, for example on quota, `auto`
+  redoes the whole run in replay.
+
+- **Use a real model on this week's papers:** see [Run it](#run-it).
 
 ## Why
 
@@ -82,7 +106,7 @@ python -m unittest discover -s tests -t .
 ### Scheduled digest (optional, off by default)
 
 [`.github/workflows/weekly-digest.yml`](.github/workflows/weekly-digest.yml) builds the digest and
-commits it to `digests/`. It runs only when started by hand from the Actions tab. To schedule it,
+commits it to `digests/`, refreshing the Pages index in `docs/`. It runs only when started by hand from the Actions tab. To schedule it,
 uncomment the `schedule:` block (Mondays 06:00 UTC). It needs a `GEMINI_API_KEY` repository
 secret. On the free tier a full week won't fit the embedding quota, so narrow `--days` or the
 categories, use a paid key, or use a self-hosted runner with Ollama (`PAPER_RADAR_EMBED=ollama`).

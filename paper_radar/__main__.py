@@ -5,6 +5,8 @@
   python -m paper_radar eval-sample --pool data/pool.jsonl
   python -m paper_radar eval-score
   python -m paper_radar eval-report
+  python -m paper_radar demo   [--mode auto|gemini|ollama|replay]
+  python -m paper_radar site
 """
 from __future__ import annotations
 
@@ -14,7 +16,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import arxiv, digest, evaluate, models, rank
+from . import arxiv, demo, digest, evaluate, models, rank, site
 
 EVAL = Path("data/eval")
 
@@ -50,23 +52,9 @@ def cmd_digest(a):
     log(f"embedding {len(papers)} papers")
     emb = rank.embed_scores(papers, themes)
     ranked = rank.llm_rank(papers, themes, emb, k=a.k, log=log)
-    by_id = {p["id"]: p for p in papers}
-    top, close = digest.select(ranked, by_id, top_n=a.top)
-    now = datetime.now(timezone.utc)
-    year, week, _ = now.isocalendar()
-    name = a.name or f"{year}-W{week:02d}"
-    judged = [r for r in ranked if r.get("score") is not None]
-    quotes = sum(r["quote_ok"] for r in judged)
-    days = sorted(p["published"][:10] for p in papers)
-    stats = (f"{name}: {len(papers)} arXiv papers submitted {days[0]} to {days[-1]} in {', '.join(sorted({c for p in papers for c in p['categories'] if c in a.categories.split(',')}))}; "
-             f"top {a.k} by embedding ({models.EMBED_MODEL}) re-scored by {', '.join(sorted({j['model'] for j in judged}))}; {len(top)} made the cut. "
-             f"Quotes verified verbatim: {quotes}/{len(judged)}.")
-    out = Path(a.out_dir)
-    out.mkdir(parents=True, exist_ok=True)
-    titles = [t["theme"] for t in themes]
-    (out / f"{name}.md").write_text(digest.markdown(f"paper-radar {name}", top, close, titles, stats), encoding="utf-8")
-    (out / f"{name}.html").write_text(digest.html(f"paper-radar {name}", top, close, titles, stats), encoding="utf-8")
-    log(f"wrote {out / name}.md and .html")
+    year, week, _ = datetime.now(timezone.utc).isocalendar()
+    digest.write(papers, themes, ranked, a.name or f"{year}-W{week:02d}", a.out_dir,
+                 a.categories.split(","), a.k, a.top, models.EMBED_MODEL, log)
 
 
 def cmd_eval_sample(a):
@@ -157,6 +145,16 @@ def main(argv=None):
     e.set_defaults(fn=cmd_eval_score)
 
     sub.add_parser("eval-report").set_defaults(fn=cmd_eval_report)
+
+    m = sub.add_parser("demo", help="rank the bundled day of papers; needs no key")
+    m.add_argument("--mode", choices=["auto", "gemini", "ollama", "replay"], default="auto",
+                   help="auto: GEMINI_API_KEY -> local Ollama -> replay of the recorded run")
+    m.add_argument("--out-dir", default="demo-out")
+    m.add_argument("--record", action="store_true", help="save this live run as the replay recording")
+    m.set_defaults(fn=lambda a: demo.run(a.mode, a.out_dir, a.record))
+
+    sub.add_parser("site", help="rebuild the GitHub Pages site in docs/ from digests/").set_defaults(
+        fn=lambda a: site.build())
     a = p.parse_args(argv)
     a.fn(a)
 

@@ -4,3 +4,4 @@ __pycache__/
 data/week-pool.jsonl
 .cache/
 data/day-*.jsonl
+demo-out/

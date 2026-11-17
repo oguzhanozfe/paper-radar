@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from html import escape
+from pathlib import Path
 
 MIN_SCORE = 7      # LLM score needed to make the top list
 CLOSE_SCORE = 5    # scores 5-6 (or 7+ beyond top N) land in "skipped but close"
@@ -71,7 +72,25 @@ def html(title, top, close, themes, stats) -> str:
         body.append("</ul>")
     body.append('<p style="color:#888;font-size:12px;margin-top:28px">Thank you to arXiv for use of its open access interoperability. '
                 'Reasons are written by the LLM named above; quotes are shown only when found verbatim in the abstract.</p>')
-    return ('<!doctype html><html><head><meta charset="utf-8"><title>' + e(title) + '</title></head>'
+    return ('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + e(title) + '</title></head>'
             '<body style="margin:0;background:#f6f6f6"><div style="max-width:680px;margin:0 auto;background:#fff;'
             'padding:24px;font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:1.45;color:#222">'
             + "\n".join(body) + "</div></body></html>\n")
+
+
+def write(papers, themes, ranked, name, out_dir, categories, k, top_n, embed_model, log=print):
+    """Select, render and write <out_dir>/<name>.md and .html."""
+    by_id = {p["id"]: p for p in papers}
+    top, close = select(ranked, by_id, top_n=top_n)
+    judged = [r for r in ranked if r.get("score") is not None]
+    quotes = sum(r["quote_ok"] for r in judged)
+    days = sorted(p["published"][:10] for p in papers)
+    stats = (f"{name}: {len(papers)} arXiv papers submitted {days[0]} to {days[-1]} in {', '.join(sorted({c for p in papers for c in p['categories'] if c in categories}))}; "
+             f"top {k} by embedding ({embed_model}) re-scored by {', '.join(sorted({j['model'] for j in judged}))}; {len(top)} made the cut. "
+             f"Quotes verified verbatim: {quotes}/{len(judged)}.")
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    titles = [t["theme"] for t in themes]
+    (out / f"{name}.md").write_text(markdown(f"paper-radar {name}", top, close, titles, stats), encoding="utf-8")
+    (out / f"{name}.html").write_text(html(f"paper-radar {name}", top, close, titles, stats), encoding="utf-8")
+    log(f"wrote {out / name}.md and .html")

@@ -14,3 +14,11 @@ jobs:
       - run: python -m unittest discover -s tests -t . -v
       - name: Recompute the README eval table offline
         run: python -m paper_radar eval-report
+      - name: Demo with no key and no Ollama (must resolve to replay and reproduce the committed digest)
+        run: |
+          python -m paper_radar demo --out-dir demo-out | tee demo.log
+          grep -q "^mode: replay" demo.log
+          diff demo-out/2026-11-13.md digests/2026-11-13.md
+          diff demo-out/2026-11-13.html digests/2026-11-13.html
+      - name: Pages site in docs/ is up to date
+        run: python -m paper_radar site && git diff --exit-code docs
