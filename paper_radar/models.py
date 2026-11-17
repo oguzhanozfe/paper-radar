@@ -2,7 +2,7 @@
 
 Choose with env vars (keys are read from the environment only, never logged):
   PAPER_RADAR_LLM    gemini | groq | openrouter | deepseek | ollama  (default gemini)
-  PAPER_RADAR_EMBED  gemini | openrouter | ollama (default gemini; DeepSeek has no embeddings)
+  PAPER_RADAR_EMBED  gemini | lmstudio | openrouter | ollama (default gemini; DeepSeek has no embeddings)
   PAPER_RADAR_LLM_MODEL / PAPER_RADAR_EMBED_MODEL to override the model names.
 PAPER_RADAR_LLM_MODEL may list several models, comma-separated: when one is out of quota or
 overloaded the next is tried, and every result records the model that produced it.
@@ -20,6 +20,7 @@ import urllib.error
 import urllib.request
 
 OLLAMA = (os.environ.get("OLLAMA_HOST") or "http://127.0.0.1:11434").rstrip("/")
+LMSTUDIO = (os.environ.get("LMSTUDIO_HOST") or "http://127.0.0.1:1234").rstrip("/")
 PROVIDERS = {
     # name: (OpenAI-compatible base URL, key env var, default chat model, default embed model)
     "gemini": ("https://generativelanguage.googleapis.com/v1beta/openai", "GEMINI_API_KEY",
@@ -29,6 +30,8 @@ PROVIDERS = {
     "openrouter": ("https://openrouter.ai/api/v1", "OPENROUTER_API_KEY",
                    "google/gemma-4-31b-it:free,google/gemma-4-26b-a4b-it:free", "nvidia/nemotron-3.5-embed-8b:free"),
     "ollama": (OLLAMA + "/v1", None, "qwen3.5:9b", "qwen3-embedding:0.6b"),
+    # LM Studio (local or on another machine via LMSTUDIO_HOST); chat model: set PAPER_RADAR_LLM_MODEL
+    "lmstudio": (LMSTUDIO + "/v1", None, "", "text-embedding-nomic-embed-text-v1.5"),
 }
 LLM = os.environ.get("PAPER_RADAR_LLM", "gemini")
 EMBED = os.environ.get("PAPER_RADAR_EMBED", "gemini")
@@ -124,7 +127,7 @@ def _post(provider: str, path: str, body: dict, retries: int = 4) -> dict:
     req = urllib.request.Request(base + path, data=json.dumps(body).encode(), headers=headers)
     for attempt in range(retries):
         try:
-            with urllib.request.urlopen(req, timeout=600 if provider == "ollama" else 120) as r:
+            with urllib.request.urlopen(req, timeout=600 if provider in ("ollama", "lmstudio") else 120) as r:
                 return json.loads(r.read())
         except urllib.error.HTTPError as e:
             msg = e.read().decode("utf-8", "replace")

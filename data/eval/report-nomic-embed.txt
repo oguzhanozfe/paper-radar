@@ -1,0 +1,10 @@
+100 papers, 14 labelled relevant
+
+| Ranker | P@10 | R@20 |
+|---|---|---|
+| keyword baseline | 0.50 | 0.43 |
+| embedding only | 0.40 | 0.57 |
+| random order (expected) | 0.14 | 0.20 |
+
+Embedding: lmstudio:text-embedding-nomic-embed-text-v1.5; run 2026-11-17T12:14:44+00:00
+Embedding recall within its top 40 (what the LLM step can see): 0.71

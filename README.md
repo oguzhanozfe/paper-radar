@@ -95,7 +95,8 @@ Backends (keys are read from the environment only):
 |---|---|---|
 | `PAPER_RADAR_LLM` | `gemini`, `groq` (`GROQ_API_KEY`, `openai/gpt-oss-20b`), `openrouter` (`OPENROUTER_API_KEY`, Gemma `:free`), `deepseek`, `ollama` | `gemini` |
 | `PAPER_RADAR_LLM_MODEL` | comma-separated fallback list | `gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemma-4-31b-it` |
-| `PAPER_RADAR_EMBED` | `gemini`, `ollama`, `openrouter` (`nvidia/nemotron-3.5-embed-8b:free`) | `gemini` (`gemini-embedding-001`) |
+| `PAPER_RADAR_EMBED` | `gemini`, `ollama`, `lmstudio`, `openrouter` (`nvidia/nemotron-3.5-embed-8b:free`) | `gemini` (`gemini-embedding-001`) |
+| `LMSTUDIO_HOST` | LM Studio URL, for `PAPER_RADAR_EMBED=lmstudio` / `PAPER_RADAR_LLM=lmstudio` (set `PAPER_RADAR_LLM_MODEL`) | `http://127.0.0.1:1234` (`text-embedding-nomic-embed-text-v1.5`) |
 | `OLLAMA_HOST` | Ollama URL | `http://127.0.0.1:11434` (`qwen3.5:9b`, `qwen3-embedding:0.6b`) |
 
 If a model is out of quota or overloaded, the next one in the list is tried, and every scored paper
@@ -171,6 +172,21 @@ its own embedder. Sources:
 [`data/eval/report-qwen3emb-gptoss.txt`](data/eval/report-qwen3emb-gptoss.txt) and
 [`data/eval/scores-qwen3emb-gptoss.json`](data/eval/scores-qwen3emb-gptoss.json). To recompute:
 `python -m paper_radar eval-report --scores scores-qwen3emb-gptoss.json`.
+
+**Which embedder.** These are the three embedders scored as embedding-only rankers on the same
+100 papers. "Top-40 recall" is the share of relevant papers the LLM step gets to see after the
+prefilter.
+
+| Embedder | P@10 | R@20 | Top-40 recall | Source |
+|---|---|---|---|---|
+| `gemini-embedding-001` (Gemini API) | 0.80 | 0.93 | 1.00 | [`report.txt`](data/eval/report.txt) |
+| `qwen3-embedding:0.6b` (Ollama) | 0.70 | 0.71 | 1.00 | [`report-qwen3emb-gptoss.txt`](data/eval/report-qwen3emb-gptoss.txt) |
+| `text-embedding-nomic-embed-text-v1.5` (LM Studio) | 0.40 | 0.57 | 0.71 | [`report-nomic-embed.txt`](data/eval/report-nomic-embed.txt) |
+
+nomic's prefilter would hide 4 of the 14 relevant papers from the LLM. So the week digest uses
+`qwen3-embedding:0.6b`, the best embedder that fit the day's quota. Adding nomic's
+`search_query:` and `search_document:` prefixes gave the same scores in a one-off check that is
+not committed.
 
 ## Known limits
 

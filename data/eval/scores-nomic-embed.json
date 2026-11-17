@@ -1,0 +1,1019 @@
+{
+ "llm_models": "gemini:gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemma-4-31b-it",
+ "embed_model": "lmstudio:text-embedding-nomic-embed-text-v1.5",
+ "prefilter_k": 40,
+ "usage": {
+  "llm_calls": 0,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "embed_calls": 8,
+  "embedded_texts": 105
+ },
+ "run_at": "2026-11-17T12:14:44+00:00",
+ "keyword": [
+  {
+   "id": "2611.14603",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13572",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15315",
+   "score": 2.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.15051",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15155",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16356",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15981",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15170",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16361",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17529",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13868",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13517",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16455",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15895",
+   "score": 1.0,
+   "theme": "Tool use and MCP"
+  },
+  {
+   "id": "2611.15777",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17650",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14328",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17856",
+   "score": 3.0,
+   "theme": "Tool use and MCP"
+  },
+  {
+   "id": "2611.16913",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17577",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14853",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14425",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15990",
+   "score": 3.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18035",
+   "score": 2.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18469",
+   "score": 1.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18078",
+   "score": 4.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14483",
+   "score": 2.0,
+   "theme": "Tool use and MCP"
+  },
+  {
+   "id": "2611.15329",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18230",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14804",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18453",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15000",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17998",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14126",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14415",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.13941",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13990",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14051",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14467",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17834",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14878",
+   "score": 1.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14357",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18274",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15925",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18157",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16003",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16228",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13972",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13957",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18333",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14811",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16424",
+   "score": 5.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16375",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14519",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15515",
+   "score": 5.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17696",
+   "score": 6.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16718",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14284",
+   "score": 6.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14818",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16856",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17867",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16031",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17710",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15073",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16345",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.18144",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18319",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13534",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16726",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16608",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14956",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17239",
+   "score": 4.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16466",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17126",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17440",
+   "score": 5.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13454",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15744",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15569",
+   "score": 1.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14900",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18272",
+   "score": 3.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.17836",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14850",
+   "score": 4.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18464",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14374",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17846",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15568",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14901",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15835",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14093",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16260",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13794",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14963",
+   "score": 4.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16108",
+   "score": 1.0,
+   "theme": "Tool use and MCP"
+  },
+  {
+   "id": "2611.17722",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17870",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13755",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17107",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16642",
+   "score": 4.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14769",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15162",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  }
+ ],
+ "embedding": [
+  {
+   "id": "2611.14603",
+   "score": 0.6275738993067611,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.13572",
+   "score": 0.6223146074744211,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.15315",
+   "score": 0.6886896028261967,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.15051",
+   "score": 0.6318313280080261,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.15155",
+   "score": 0.5974562182606179,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.16356",
+   "score": 0.5824558437447505,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15981",
+   "score": 0.5805987528369969,
+   "theme": "Tool use and MCP"
+  },
+  {
+   "id": "2611.15170",
+   "score": 0.655173750993033,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.16361",
+   "score": 0.6443730237672706,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.17529",
+   "score": 0.6317021386279937,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.13868",
+   "score": 0.6127873396097424,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.13517",
+   "score": 0.5770347336828832,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.16455",
+   "score": 0.6446577692077592,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.15895",
+   "score": 0.6092024484530847,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15777",
+   "score": 0.6949948219749507,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17650",
+   "score": 0.6660619133789624,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14328",
+   "score": 0.6206006400429859,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17856",
+   "score": 0.6912126980003924,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16913",
+   "score": 0.6249313628620145,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.17577",
+   "score": 0.5778764112756698,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14853",
+   "score": 0.6034778806684153,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.14425",
+   "score": 0.6080951406831525,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15990",
+   "score": 0.6191005474758369,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18035",
+   "score": 0.6570740225769878,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18469",
+   "score": 0.6315324845072623,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.18078",
+   "score": 0.6369089166284368,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.14483",
+   "score": 0.6742747600694566,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15329",
+   "score": 0.6667588281210887,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18230",
+   "score": 0.6753948983973725,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14804",
+   "score": 0.6554724263181456,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18453",
+   "score": 0.6742398382463977,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15000",
+   "score": 0.6876578623195622,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17998",
+   "score": 0.5884272464935775,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14126",
+   "score": 0.58011615541535,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14415",
+   "score": 0.631654938503896,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.13941",
+   "score": 0.6335161156301092,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.13990",
+   "score": 0.7253060383303581,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14051",
+   "score": 0.6402539692883092,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14467",
+   "score": 0.6402234641677604,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17834",
+   "score": 0.7078925189805786,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14878",
+   "score": 0.6094913217221017,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14357",
+   "score": 0.6044856377396888,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18274",
+   "score": 0.6233422453031353,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15925",
+   "score": 0.7140751294181714,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.18157",
+   "score": 0.6887064130151759,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16003",
+   "score": 0.6355113937296323,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.16228",
+   "score": 0.6459294461776675,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13972",
+   "score": 0.6835688773895923,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.13957",
+   "score": 0.678075655488379,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.18333",
+   "score": 0.6152411594202952,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14811",
+   "score": 0.569114707801995,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.16424",
+   "score": 0.6682368064025889,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.16375",
+   "score": 0.6899383996744478,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14519",
+   "score": 0.6220955854745515,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15515",
+   "score": 0.7239890811687992,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17696",
+   "score": 0.658034799424325,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16718",
+   "score": 0.6607272682895832,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14284",
+   "score": 0.6683675196253258,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14818",
+   "score": 0.6383088397363303,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16856",
+   "score": 0.7248321394721996,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17867",
+   "score": 0.6948461349478451,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.16031",
+   "score": 0.6101991955424589,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.17710",
+   "score": 0.6221203000016223,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15073",
+   "score": 0.6606923452333855,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16345",
+   "score": 0.692749563657303,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18144",
+   "score": 0.626454691514074,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.18319",
+   "score": 0.6477681919068082,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.13534",
+   "score": 0.661463650847159,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.16726",
+   "score": 0.6628477229582332,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.16608",
+   "score": 0.6746201830233584,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14956",
+   "score": 0.65113480390548,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.17239",
+   "score": 0.7186606843221167,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16466",
+   "score": 0.6402441178574579,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17126",
+   "score": 0.5907226151469198,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17440",
+   "score": 0.7279687867258869,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13454",
+   "score": 0.6523661188514378,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15744",
+   "score": 0.6463651538901106,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15569",
+   "score": 0.6716798500333518,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14900",
+   "score": 0.5699161325424639,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18272",
+   "score": 0.6970043947666953,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17836",
+   "score": 0.6935163295049775,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14850",
+   "score": 0.6918399418863347,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18464",
+   "score": 0.6399219851212351,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14374",
+   "score": 0.6240555364258601,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17846",
+   "score": 0.6682370477648369,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15568",
+   "score": 0.6970373674915648,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14901",
+   "score": 0.712390609006399,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15835",
+   "score": 0.6479795923008462,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14093",
+   "score": 0.6530642297772662,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16260",
+   "score": 0.7400231959973999,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.13794",
+   "score": 0.6508040960068444,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14963",
+   "score": 0.6748787928400264,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16108",
+   "score": 0.642190992472577,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17722",
+   "score": 0.6071461659642734,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17870",
+   "score": 0.7218147027180712,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.13755",
+   "score": 0.6396479749292182,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17107",
+   "score": 0.649327286045922,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16642",
+   "score": 0.614338431281847,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14769",
+   "score": 0.6755189270693355,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15162",
+   "score": 0.5898706452792349,
+   "theme": "RAG with evidence"
+  }
+ ],
+ "pipeline": [],
+ "llm_all": []
+}

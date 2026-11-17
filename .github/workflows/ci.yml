@@ -16,6 +16,7 @@ jobs:
         run: |
           python -m paper_radar eval-report
           python -m paper_radar eval-report --scores scores-qwen3emb-gptoss.json
+          python -m paper_radar eval-report --scores scores-nomic-embed.json
       - name: Demo with no key and no Ollama (must resolve to replay and reproduce the committed digest)
         run: |
           python -m paper_radar demo --out-dir demo-out | tee demo.log

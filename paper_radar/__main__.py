@@ -97,6 +97,9 @@ def cmd_eval_report(a):
     print(evaluate.table(rankings_from(scores), labels))
     judged = [x for x in scores["pipeline"] if x.get("score") is not None]
     print(f"\nEmbedding: {scores['embed_model']}; run {scores['run_at']}")
+    k = scores["prefilter_k"]
+    print(f"Embedding recall within its top {k} (what the LLM step can see): "
+          f"{evaluate.recall_at(rank.order(scores['embedding']), labels, k):.2f}")
     for name in ("pipeline", "llm_all"):
         judged = [x for x in scores.get(name) or [] if x.get("score") is not None]
         if not judged:
