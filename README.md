@@ -4,10 +4,14 @@ A weekly arXiv digest ranked against an interest profile you write in Markdown.
 
 ## Try it
 
-- **Read a real digest, no install:** <https://oguzhanozfe.github.io/paper-radar/>. It is built from
-  the 254 papers submitted on 2026-11-13.
+- **Read a real digest, no install:** <https://oguzhanozfe.github.io/paper-radar/>.
+  - [2026-W46](https://oguzhanozfe.github.io/paper-radar/2026-W46.html) covers all 1,226 papers the
+    API returned for the week. They were ranked by a local `qwen3-embedding:0.6b` prefilter, then
+    re-scored by Groq `openai/gpt-oss-20b`.
+  - [2026-11-13](https://oguzhanozfe.github.io/paper-radar/2026-11-13.html) covers the 254 papers
+    from that day. They were ranked by `gemini-embedding-001`, then re-scored by Gemini flash-lite.
 
-  [![The 2026-11-13 digest](docs/screenshot.png)](https://oguzhanozfe.github.io/paper-radar/2026-11-13.html)
+  [![The 2026-W46 digest](docs/screenshot.png)](https://oguzhanozfe.github.io/paper-radar/2026-W46.html)
 
 - **Run it with no key** (Python 3.10+, standard library only):
 
@@ -65,7 +69,7 @@ arXiv API ──► week of papers ──► embedding similarity to each profil
 - `paper_radar/rank.py` holds the keyword baseline, the embedding ranker, and the LLM judge with
   quote verification.
 - `paper_radar/models.py` holds the backends. Gemini is the default, through its OpenAI-compatible
-  API; DeepSeek or a local Ollama are optional.
+  API. Groq, OpenRouter, DeepSeek and a local Ollama are optional.
 - `paper_radar/digest.py` renders the Markdown and the inline-styled HTML. All arXiv and model text
   is escaped.
 - `profile.md` is the interest profile: one `##` section per theme, embedded as-is, plus a
@@ -89,9 +93,9 @@ Backends (keys are read from the environment only):
 
 | Env var | Values | Default |
 |---|---|---|
-| `PAPER_RADAR_LLM` | `gemini`, `deepseek`, `ollama` | `gemini` |
+| `PAPER_RADAR_LLM` | `gemini`, `groq` (`GROQ_API_KEY`, `openai/gpt-oss-20b`), `openrouter` (`OPENROUTER_API_KEY`, Gemma `:free`), `deepseek`, `ollama` | `gemini` |
 | `PAPER_RADAR_LLM_MODEL` | comma-separated fallback list | `gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemma-4-31b-it` |
-| `PAPER_RADAR_EMBED` | `gemini`, `ollama` | `gemini` (`gemini-embedding-001`) |
+| `PAPER_RADAR_EMBED` | `gemini`, `ollama`, `openrouter` (`nvidia/nemotron-3.5-embed-8b:free`) | `gemini` (`gemini-embedding-001`) |
 | `OLLAMA_HOST` | Ollama URL | `http://127.0.0.1:11434` (`qwen3.5:9b`, `qwen3-embedding:0.6b`) |
 
 If a model is out of quota or overloaded, the next one in the list is tried, and every scored paper
@@ -152,6 +156,22 @@ verified quote for each paper, plus an absolute score: the digest can say "nothi
 a theme, instead of always showing a top 10. With 14 relevant papers, one paper moves P@10 by 0.10,
 so differences of that size are noise.
 
+**The model pair behind the week digest**, scored on the same 100 papers and labels. The embedder
+is `qwen3-embedding:0.6b` on a local Ollama, and the LLM is Groq `openai/gpt-oss-20b`, with
+`reasoning_effort: low`. The run was on 2026-11-17.
+
+| Ranker | P@10 | R@20 |
+|---|---|---|
+| embedding only (`qwen3-embedding:0.6b`) | 0.70 | 0.71 |
+| embedding top-40 → LLM (`gpt-oss-20b`) | 0.70 | 0.86 |
+
+The digest cut (score ≥ 7) kept 16 papers: precision 0.62, recall 0.71. Quotes verified verbatim:
+35/40. This pair is weaker than the Gemini pair above, and here the LLM step does add recall over
+its own embedder. Sources:
+[`data/eval/report-qwen3emb-gptoss.txt`](data/eval/report-qwen3emb-gptoss.txt) and
+[`data/eval/scores-qwen3emb-gptoss.json`](data/eval/scores-qwen3emb-gptoss.json). To recompute:
+`python -m paper_radar eval-report --scores scores-qwen3emb-gptoss.json`.
+
 ## Known limits
 
 - **Labels.** The 100 labels were drafted by an LLM annotator (Claude Sonnet) from title and abstract
@@ -162,21 +182,26 @@ so differences of that size are noise.
 - **Small sample.** 100 papers and 14 positives: treat the table as a sanity check, not a benchmark.
 - **One week.** The 7-day query on 2026-11-17 returned 1,226 papers, all submitted
   2026-11-10 to 2026-11-13. Later submissions were not in the API's index yet when it ran.
-- **Free-tier quotas.** Gemini's free tier counted every embedded text as one request: 100 a
-  minute and 1,000 a day per embedding model, shared by every project on the same key. A
-  five-category week is about 1,230 texts, so it does not fit in one day. On 2026-11-17 the daily
-  quota for both `gemini-embedding-001` and `gemini-embedding-2` ran out, and the local Ollama
-  backend was too busy to answer within 10 minutes. The committed digest therefore covers one
-  submission day: 254 papers, all embedded with `gemini-embedding-001`, the same embedder as the
-  eval. Ways around this: a paid key, `PAPER_RADAR_EMBED=ollama` on an idle machine, or fewer
-  `--days` or categories. Embeddings are cached, so a run that stops on the quota resumes where it
-  stopped. The chat model can differ between batches when the fallback kicks in, and each result
-  records which model scored it.
+- **Free-tier quotas and the two digests.** Gemini's free tier counted every embedded text as one
+  request: 100 a minute and 1,000 a day per embedding model, shared by every project on the same
+  key. A five-category week is about 1,230 texts. On 2026-11-17 the daily quota ran out, so the
+  first committed digest covers one day (2026-11-13), embedded with `gemini-embedding-001`.
+- **What happened with the week digest:**
+  - **OpenRouter:** its free embedder, `nvidia/nemotron-3.5-embed-8b:free`, took about 1.5 s per
+    text. It also rejected the profile's "AI for games and player data" theme with HTTP 422, "input
+    rejected by content safety screening", so it can't be relied on for this profile.
+  - **What was used:** the week digest (2026-W46) uses a local `qwen3-embedding:0.6b`, which took
+    about 2 minutes for the week, and Groq `gpt-oss-20b` for the LLM step. That pair is measured
+    above.
+  - **Groq limits:** Groq's free tier allows 8,000 tokens a minute, shared across the key, so its
+    429s are waited out once per minute window.
+  - **Resuming:** embeddings and replies are cached, so a run that stops resumes where it stopped.
+    Each result records which model scored it.
 - **Code detection** only sees GitHub links in the abstract or the arXiv comment. A link that exists
   only in the PDF is missed. Abstracts that say "code will be released" without a link are flagged
   `code_hint` but not linked.
-- **Ollama backend** is wired up and covered by the same code paths, but none of the committed
-  results used it: the shared local Ollama was saturated during this build.
+- **Ollama** was used only for embeddings, in the week digest and the second eval table. Ollama
+  as the LLM (`qwen3.5:9b`) has not been run live.
 - **Quote check** proves the quote exists in the abstract. It does not prove the reason is right.
 
 ## Data and terms

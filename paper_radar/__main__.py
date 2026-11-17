@@ -68,22 +68,23 @@ def cmd_eval_score(a):
     papers = read_jsonl(EVAL / "papers.jsonl")
     kw = rank.keyword_scores(papers, themes)
     emb = rank.embed_scores(papers, themes)
-    pipeline = rank.llm_rank(papers, themes, emb, k=a.k, log=log)
+    pipeline = [] if a.embed_only else rank.llm_rank(papers, themes, emb, k=a.k, log=log)
     # same batches as the pipeline for the first k papers (k is a multiple of BATCH): cache hits
     llm_all = rank.llm_rank(papers, themes, emb, k=len(papers), log=log) if a.all else []
     result = {**models.describe(), "prefilter_k": a.k, "usage": models.usage,
               "run_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
               "keyword": kw, "embedding": emb, "pipeline": pipeline, "llm_all": llm_all}
-    (EVAL / "scores.json").write_text(json.dumps(result, indent=1, ensure_ascii=False), encoding="utf-8")
-    log(f"scores -> {EVAL / 'scores.json'}")
+    (EVAL / a.out).write_text(json.dumps(result, indent=1, ensure_ascii=False), encoding="utf-8")
+    log(f"scores -> {EVAL / a.out}")
 
 
 def rankings_from(scores: dict) -> dict[str, list[str]]:
     r = {
         "keyword baseline": rank.order(scores["keyword"]),
         "embedding only": rank.order(scores["embedding"]),
-        f"embedding top-{scores['prefilter_k']} → LLM (shipped)": [x["id"] for x in scores["pipeline"]],
     }
+    if scores.get("pipeline"):
+        r[f"embedding top-{scores['prefilter_k']} → LLM (shipped)"] = [x["id"] for x in scores["pipeline"]]
     if scores.get("llm_all"):
         r["LLM on all papers"] = [x["id"] for x in scores["llm_all"]]
     return r
@@ -91,7 +92,7 @@ def rankings_from(scores: dict) -> dict[str, list[str]]:
 
 def cmd_eval_report(a):
     labels = evaluate.load_labels(EVAL / "labels.csv")
-    scores = json.loads((EVAL / "scores.json").read_text(encoding="utf-8"))
+    scores = json.loads((EVAL / a.scores).read_text(encoding="utf-8"))
     print(f"{len(labels)} papers, {sum(labels.values())} labelled relevant\n")
     print(evaluate.table(rankings_from(scores), labels))
     judged = [x for x in scores["pipeline"] if x.get("score") is not None]
@@ -142,9 +143,13 @@ def main(argv=None):
     e.add_argument("--profile", default="profile.md")
     e.add_argument("--k", type=int, default=rank.PREFILTER_K)
     e.add_argument("--all", action="store_true", help="also LLM-score every paper (slow)")
+    e.add_argument("--embed-only", action="store_true", help="score the keyword and embedding rankers only")
+    e.add_argument("--out", default="scores.json", help="file name under data/eval/")
     e.set_defaults(fn=cmd_eval_score)
 
-    sub.add_parser("eval-report").set_defaults(fn=cmd_eval_report)
+    r = sub.add_parser("eval-report")
+    r.add_argument("--scores", default="scores.json", help="file name under data/eval/")
+    r.set_defaults(fn=cmd_eval_report)
 
     m = sub.add_parser("demo", help="rank the bundled day of papers; needs no key")
     m.add_argument("--mode", choices=["auto", "gemini", "ollama", "replay"], default="auto",

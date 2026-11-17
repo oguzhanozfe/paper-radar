@@ -1,8 +1,8 @@
 """Model backends. Gemini (free tier) by default; DeepSeek or a local Ollama optional.
 
 Choose with env vars (keys are read from the environment only, never logged):
-  PAPER_RADAR_LLM    gemini | deepseek | ollama   (default gemini)
-  PAPER_RADAR_EMBED  gemini | ollama              (default gemini; DeepSeek has no embeddings)
+  PAPER_RADAR_LLM    gemini | groq | openrouter | deepseek | ollama  (default gemini)
+  PAPER_RADAR_EMBED  gemini | openrouter | ollama (default gemini; DeepSeek has no embeddings)
   PAPER_RADAR_LLM_MODEL / PAPER_RADAR_EMBED_MODEL to override the model names.
 PAPER_RADAR_LLM_MODEL may list several models, comma-separated: when one is out of quota or
 overloaded the next is tried, and every result records the model that produced it.
@@ -24,7 +24,10 @@ PROVIDERS = {
     # name: (OpenAI-compatible base URL, key env var, default chat model, default embed model)
     "gemini": ("https://generativelanguage.googleapis.com/v1beta/openai", "GEMINI_API_KEY",
                "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemma-4-31b-it", "gemini-embedding-001"),
+    "groq": ("https://api.groq.com/openai/v1", "GROQ_API_KEY", "openai/gpt-oss-20b", None),
     "deepseek": ("https://api.deepseek.com", "DEEPSEEK_API_KEY", "deepseek-chat", None),
+    "openrouter": ("https://openrouter.ai/api/v1", "OPENROUTER_API_KEY",
+                   "google/gemma-4-31b-it:free,google/gemma-4-26b-a4b-it:free", "nvidia/nemotron-3.5-embed-8b:free"),
     "ollama": (OLLAMA + "/v1", None, "qwen3.5:9b", "qwen3-embedding:0.6b"),
 }
 LLM = os.environ.get("PAPER_RADAR_LLM", "gemini")
@@ -49,7 +52,7 @@ def embed(texts: list[str], batch: int | None = None) -> list[list[float]]:
     Gemini's free tier counts every text as one request (100/minute), so batches are
     paced a minute apart and the cache is saved after each batch.
     """
-    batch = batch or (90 if EMBED == "gemini" else 16)
+    batch = batch or {"gemini": 90, "openrouter": 32}.get(EMBED, 16)
     path = os.path.join(CACHE, "..", f"embed-{EMBED}-{EMBED_MODEL.replace('/', '_')}.json")
     cache = {}
     if os.path.exists(path):
@@ -91,6 +94,8 @@ def chat(prompt: str) -> tuple[str, str]:
                 "response_format": {"type": "json_object"}}
         if LLM == "ollama":
             body["reasoning_effort"] = "none"  # qwen3.5 thinking off
+        elif LLM == "groq":
+            body["reasoning_effort"] = "low"  # gpt-oss: keeps a batch well inside the free 8k tokens/minute
         try:
             r = _post(LLM, "/chat/completions", body)
         except Unavailable as e:
@@ -110,7 +115,7 @@ def chat(prompt: str) -> tuple[str, str]:
 
 def _post(provider: str, path: str, body: dict, retries: int = 4) -> dict:
     base, key_env, _, _ = PROVIDERS[provider]
-    headers = {"Content-Type": "application/json"}
+    headers = {"Content-Type": "application/json", "User-Agent": "paper-radar/0.1"}  # Groq rejects urllib's default UA
     if key_env:
         key = os.environ.get(key_env)
         if not key:
@@ -124,16 +129,19 @@ def _post(provider: str, path: str, body: dict, retries: int = 4) -> dict:
         except urllib.error.HTTPError as e:
             msg = e.read().decode("utf-8", "replace")
             # a daily quota will not recover by waiting; an overloaded model may not either
-            if e.code == 429 and "per day" in msg.lower() and path == "/embeddings":
+            if e.code == 429 and re.search(r"per[- ]?day", msg, re.I) and path == "/embeddings":
                 raise SystemExit(f"{provider} daily embedding quota used up. Embedded texts so far are cached; "
                                  "rerun tomorrow, or set PAPER_RADAR_EMBED=ollama, or use fewer --days/--categories.")
-            if e.code == 429 and ("PerDay" in msg or "per day" in msg.lower()) or e.code == 503 and attempt >= 1:
+            if e.code == 429 and ("PerDay" in msg or re.search(r"per[- ]day", msg, re.I)) or e.code == 503 and attempt >= 1:
                 raise Unavailable(f"HTTP {e.code} (daily quota)" if e.code == 429 else f"HTTP {e.code}") from None
             if e.code not in (429, 500, 502, 503, 504) or attempt == retries - 1:
                 raise (Unavailable if e.code in (429, 503) else RuntimeError)(f"{provider} {path}: HTTP {e.code}") from None
             # per-minute limits say how long to wait ("Please retry in 33.4s"); otherwise back off
-            m = re.search(r"retry in ([\d.]+)s", msg)
-            wait = float(m.group(1)) + 1 if m else min(60, 5 * 2 ** attempt)
+            m = re.search(r"(?:retry|try again) in ([\d.]+)(ms|s)", msg)
+            if m:
+                wait = float(m.group(1)) / (1000 if m.group(2) == "ms" else 1) + 1
+            else:  # a per-minute window: wait it out once rather than hammering it
+                wait = 61 if e.code == 429 else min(60, 5 * 2 ** attempt)
         except OSError as e:  # timeouts, dropped connections: give it one more try, then move on
             if attempt >= 1:
                 raise Unavailable(f"{type(e).__name__}") from None

@@ -1,0 +1,11 @@
+100 papers, 14 labelled relevant
+
+| Ranker | P@10 | R@20 |
+|---|---|---|
+| keyword baseline | 0.50 | 0.43 |
+| embedding only | 0.70 | 0.71 |
+| embedding top-40 → LLM (shipped) | 0.70 | 0.86 |
+| random order (expected) | 0.14 | 0.20 |
+
+Embedding: ollama:qwen3-embedding:0.6b; run 2026-11-17T12:12:21+00:00
+pipeline: 40 papers LLM-scored by {'groq:openai/gpt-oss-20b': 40}; quotes verified verbatim 35/40; digest cut (score >= 7) keeps 16, precision 0.62, recall 0.71
