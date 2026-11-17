@@ -14,7 +14,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import arxiv, digest, evaluate, rank
+from . import arxiv, digest, evaluate, models, rank
 
 EVAL = Path("data/eval")
 
@@ -58,7 +58,7 @@ def cmd_digest(a):
     judged = [r for r in ranked if r.get("score") is not None]
     quotes = sum(r["quote_ok"] for r in judged)
     stats = (f"Week {name}: {len(papers)} new arXiv papers in {', '.join(sorted({c for p in papers for c in p['categories'] if c in a.categories.split(',')}))}; "
-             f"top {a.k} by embedding re-scored by {rank.LLM_MODEL}; {len(top)} made the cut. "
+             f"top {a.k} by embedding ({models.EMBED_MODEL}) re-scored by {', '.join(sorted({j['model'] for j in judged}))}; {len(top)} made the cut. "
              f"Quotes verified verbatim: {quotes}/{len(judged)}.")
     out = Path(a.out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -80,9 +80,10 @@ def cmd_eval_score(a):
     kw = rank.keyword_scores(papers, themes)
     emb = rank.embed_scores(papers, themes)
     pipeline = rank.llm_rank(papers, themes, emb, k=a.k, log=log)
+    # same batches as the pipeline for the first k papers (k is a multiple of BATCH): cache hits
     llm_all = rank.llm_rank(papers, themes, emb, k=len(papers), log=log) if a.all else []
-    result = {"embed_model": rank.EMBED_MODEL, "llm_model": rank.LLM_MODEL, "prefilter_k": a.k,
-              "model_digests": rank.model_digests(), "run_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    result = {**models.describe(), "prefilter_k": a.k, "usage": models.usage,
+              "run_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
               "keyword": kw, "embedding": emb, "pipeline": pipeline, "llm_all": llm_all}
     (EVAL / "scores.json").write_text(json.dumps(result, indent=1, ensure_ascii=False), encoding="utf-8")
     log(f"scores -> {EVAL / 'scores.json'}")
@@ -105,7 +106,20 @@ def cmd_eval_report(a):
     print(f"{len(labels)} papers, {sum(labels.values())} labelled relevant\n")
     print(evaluate.table(rankings_from(scores), labels))
     judged = [x for x in scores["pipeline"] if x.get("score") is not None]
-    print(f"\nLLM quotes verified verbatim: {sum(x['quote_ok'] for x in judged)}/{len(judged)}")
+    print(f"\nEmbedding: {scores['embed_model']}; run {scores['run_at']}")
+    for name in ("pipeline", "llm_all"):
+        judged = [x for x in scores.get(name) or [] if x.get("score") is not None]
+        if not judged:
+            continue
+        used = {}
+        for x in judged:
+            used[x["model"]] = used.get(x["model"], 0) + 1
+        cut = [x for x in judged if x["score"] >= digest.MIN_SCORE]
+        hit = sum(labels[x["id"]] for x in cut)
+        print(f"{name}: {len(judged)} papers LLM-scored by {used}; "
+              f"quotes verified verbatim {sum(x['quote_ok'] for x in judged)}/{len(judged)}; "
+              f"digest cut (score >= {digest.MIN_SCORE}) keeps {len(cut)}, precision {hit / max(1, len(cut)):.2f}, "
+              f"recall {hit / sum(labels.values()):.2f}")
 
 
 def main(argv=None):
@@ -125,7 +139,7 @@ def main(argv=None):
     d.add_argument("--categories", default=cats)
     d.add_argument("--profile", default="profile.md")
     d.add_argument("--top", type=int, default=15)
-    d.add_argument("--k", type=int, default=60, help="papers re-scored by the LLM after the embedding prefilter")
+    d.add_argument("--k", type=int, default=64, help="papers re-scored by the LLM after the embedding prefilter")
     d.add_argument("--out-dir", default="digests")
     d.set_defaults(fn=cmd_digest)
 

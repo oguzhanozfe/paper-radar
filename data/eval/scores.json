@@ -1,0 +1,2782 @@
+{
+ "llm_models": "gemini:gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemma-4-31b-it",
+ "embed_model": "gemini:gemini-embedding-001",
+ "prefilter_k": 40,
+ "usage": {
+  "llm_calls": 0,
+  "prompt_tokens": 0,
+  "completion_tokens": 0,
+  "embed_calls": 0,
+  "embedded_texts": 0,
+  "cache_hits": 18
+ },
+ "run_at": "2026-11-17T09:39:17+00:00",
+ "keyword": [
+  {
+   "id": "2611.14603",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13572",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15315",
+   "score": 2.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.15051",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15155",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16356",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15981",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15170",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16361",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17529",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13868",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13517",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16455",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15895",
+   "score": 1.0,
+   "theme": "Tool use and MCP"
+  },
+  {
+   "id": "2611.15777",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17650",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14328",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17856",
+   "score": 3.0,
+   "theme": "Tool use and MCP"
+  },
+  {
+   "id": "2611.16913",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17577",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14853",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14425",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15990",
+   "score": 3.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18035",
+   "score": 2.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18469",
+   "score": 1.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18078",
+   "score": 4.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14483",
+   "score": 2.0,
+   "theme": "Tool use and MCP"
+  },
+  {
+   "id": "2611.15329",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18230",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14804",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18453",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15000",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17998",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14126",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14415",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.13941",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13990",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14051",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14467",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17834",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14878",
+   "score": 1.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14357",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18274",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15925",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18157",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16003",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16228",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13972",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13957",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18333",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14811",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16424",
+   "score": 5.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16375",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14519",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15515",
+   "score": 5.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17696",
+   "score": 6.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16718",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14284",
+   "score": 6.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14818",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16856",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17867",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16031",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17710",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15073",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16345",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.18144",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18319",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13534",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16726",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16608",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14956",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17239",
+   "score": 4.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16466",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17126",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17440",
+   "score": 5.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13454",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15744",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15569",
+   "score": 1.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14900",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.18272",
+   "score": 3.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.17836",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14850",
+   "score": 4.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18464",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14374",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17846",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15568",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14901",
+   "score": 2.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15835",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14093",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16260",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13794",
+   "score": 1.0,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14963",
+   "score": 4.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16108",
+   "score": 1.0,
+   "theme": "Tool use and MCP"
+  },
+  {
+   "id": "2611.17722",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17870",
+   "score": 3.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13755",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17107",
+   "score": 0.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16642",
+   "score": 4.0,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14769",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15162",
+   "score": 1.0,
+   "theme": "LLM agents and evaluation"
+  }
+ ],
+ "embedding": [
+  {
+   "id": "2611.14603",
+   "score": 0.5886867132877948,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.13572",
+   "score": 0.6085091789586129,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15315",
+   "score": 0.6895077247124759,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15051",
+   "score": 0.6239698432130466,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15155",
+   "score": 0.5850146773756248,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16356",
+   "score": 0.5820863884420231,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15981",
+   "score": 0.6116904312048811,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15170",
+   "score": 0.6573830415972395,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16361",
+   "score": 0.5947865077294117,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.17529",
+   "score": 0.6510064446931106,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13868",
+   "score": 0.6049641261660025,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13517",
+   "score": 0.5928592574963704,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.16455",
+   "score": 0.6665842727539264,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15895",
+   "score": 0.6039643785557602,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.15777",
+   "score": 0.7222275700693728,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17650",
+   "score": 0.5960342243276723,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14328",
+   "score": 0.5975304670889858,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17856",
+   "score": 0.6583465705014001,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16913",
+   "score": 0.6371055115987442,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17577",
+   "score": 0.5932201795212741,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14853",
+   "score": 0.5687408677781353,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14425",
+   "score": 0.6334834925192308,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15990",
+   "score": 0.601388245196107,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18035",
+   "score": 0.6506185981640841,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18469",
+   "score": 0.5864047834324478,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18078",
+   "score": 0.6346878978442655,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14483",
+   "score": 0.6296248145003968,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15329",
+   "score": 0.6314811152734157,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18230",
+   "score": 0.680431322661053,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14804",
+   "score": 0.627743278515767,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.18453",
+   "score": 0.6710186796718488,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.15000",
+   "score": 0.6507820525240349,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17998",
+   "score": 0.5665184696514921,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14126",
+   "score": 0.6015279743794005,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14415",
+   "score": 0.6221099405176164,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.13941",
+   "score": 0.610558781312963,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.13990",
+   "score": 0.621135872164081,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14051",
+   "score": 0.6984371411112698,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14467",
+   "score": 0.6612029390953944,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17834",
+   "score": 0.6734580554859073,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14878",
+   "score": 0.5797945957212722,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14357",
+   "score": 0.629660040577399,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18274",
+   "score": 0.6692287096213068,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15925",
+   "score": 0.6771493295313261,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.18157",
+   "score": 0.646466196498052,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16003",
+   "score": 0.6030298999575409,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.16228",
+   "score": 0.6752360897641558,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13972",
+   "score": 0.6428204371942655,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.13957",
+   "score": 0.6058863912050918,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.18333",
+   "score": 0.597069607026248,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14811",
+   "score": 0.5736746861720273,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.16424",
+   "score": 0.6479796586211293,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16375",
+   "score": 0.6901442805754509,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14519",
+   "score": 0.6231456737111762,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.15515",
+   "score": 0.7335303364398303,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17696",
+   "score": 0.7394457754823851,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16718",
+   "score": 0.6272154372892536,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14284",
+   "score": 0.6501387595959941,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14818",
+   "score": 0.6373460637645171,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.16856",
+   "score": 0.7131959611229148,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17867",
+   "score": 0.6956409843168071,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16031",
+   "score": 0.592408433600406,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.17710",
+   "score": 0.6155013660862066,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.15073",
+   "score": 0.5831236654572731,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16345",
+   "score": 0.6806327668232148,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18144",
+   "score": 0.6005807024004884,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.18319",
+   "score": 0.6676751399657228,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.13534",
+   "score": 0.6795427169237527,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.16726",
+   "score": 0.6219680121280086,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16608",
+   "score": 0.6624457007149586,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14956",
+   "score": 0.6053694682800826,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.17239",
+   "score": 0.7158728774767311,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16466",
+   "score": 0.7166492658078243,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17126",
+   "score": 0.6214188331272341,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17440",
+   "score": 0.7481291405432006,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13454",
+   "score": 0.6822355586565202,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15744",
+   "score": 0.655964304642547,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15569",
+   "score": 0.6963039948795665,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14900",
+   "score": 0.5717537767494646,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18272",
+   "score": 0.6755915595803664,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17836",
+   "score": 0.6530282148217866,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14850",
+   "score": 0.7566704613245694,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.18464",
+   "score": 0.6467627751914343,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14374",
+   "score": 0.6086076361622506,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.17846",
+   "score": 0.66498497431945,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.15568",
+   "score": 0.6989415170874586,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14901",
+   "score": 0.7011684852527237,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15835",
+   "score": 0.6629182288874998,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.14093",
+   "score": 0.5843166505444277,
+   "theme": "AI for games and player data"
+  },
+  {
+   "id": "2611.16260",
+   "score": 0.7019397667502625,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.13794",
+   "score": 0.6061874116558544,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.14963",
+   "score": 0.6964736821378517,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.16108",
+   "score": 0.6364645951043728,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.17722",
+   "score": 0.5951037466816442,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17870",
+   "score": 0.6526741915925611,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.13755",
+   "score": 0.5973897137678879,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.17107",
+   "score": 0.6267322709130402,
+   "theme": "RAG with evidence"
+  },
+  {
+   "id": "2611.16642",
+   "score": 0.6793866202035759,
+   "theme": "Local and small models"
+  },
+  {
+   "id": "2611.14769",
+   "score": 0.6816059412051237,
+   "theme": "LLM agents and evaluation"
+  },
+  {
+   "id": "2611.15162",
+   "score": 0.5781614804125182,
+   "theme": "Tool use and MCP"
+  }
+ ],
+ "pipeline": [
+  {
+   "id": "2611.14963",
+   "score": 10,
+   "theme": "LLM agents and evaluation",
+   "reason": "This is a direct application of agentic pipelines for task execution and refactoring, including a comparative evaluation of agent designs.",
+   "quote": "Agentic LLM pipelines can combine contextual detection, transformation selection, and patch generation.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6964736821378517
+  },
+  {
+   "id": "2611.15925",
+   "score": 10,
+   "theme": "LLM agents and evaluation",
+   "reason": "This is a must-read paper that introduces a rigorous new benchmark to evaluate LLM limitations and expose vulnerabilities in machine unlearning.",
+   "quote": "To quantify this limitation, we introduce ShadowBench, a rigorously hardened, shortcut-resistant benchmark designed to evaluate Latent Entity Association",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6771493295313261
+  },
+  {
+   "id": "2611.15835",
+   "score": 10,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper directly addresses the pre-deployment evaluation and failure mode analysis of AI agents using a rigorous statistical framework.",
+   "quote": "On SWE-Chat, a dataset of real-world coding agent traces",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6629182288874998
+  },
+  {
+   "id": "2611.14850",
+   "score": 9,
+   "theme": "Local and small models",
+   "reason": "This paper focuses on reasoning distillation for small language models like Qwen3 1.7B and 4B to improve efficiency and reduce memory requirements.",
+   "quote": "Our main study distills Qwen3 4B -> 1.7B.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7566704613245694
+  },
+  {
+   "id": "2611.17440",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper analyzes coding agent trajectories and behavior to better understand and evaluate agent performance beyond binary task success.",
+   "quote": "Standard coding-agent benchmarks primarily evaluate binary task success, treating execution as a black box",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7481291405432006
+  },
+  {
+   "id": "2611.17696",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "It investigates agent harnesses and externalized control assets to improve the reliability of long-horizon business workflows.",
+   "quote": "We study whether such workflows can be made reliable without changing the language model.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7394457754823851
+  },
+  {
+   "id": "2611.15515",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper introduces a runtime architecture and evaluation framework for long-lived personal AI agents with runtime contracts and resource allocation.",
+   "quote": "We formalize an incentive not as text in a prompt but as a runtime contract over the agent's operating point",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7335303364398303
+  },
+  {
+   "id": "2611.15777",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "This work introduces a comprehensive benchmark and evaluation methodology for assessing the capability spectrum and decision reliability of System One models.",
+   "quote": "We introduce SO-Arena, a benchmark characterizing the capability spectrum and decision reliability of System One models",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7222275700693728
+  },
+  {
+   "id": "2611.14901",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "This study directly addresses multi-agent deliberation and its impact on decision-making, which is central to evaluating agentic workflows.",
+   "quote": "Multi-agent deliberation (MAD), where multiple LLMs engage in structured discussion, improves AI performance on many benchmarks",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.7011684852527237
+  },
+  {
+   "id": "2611.15568",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper provides a rigorous methodology for evaluating model capability and failure analysis, which is critical for agent evaluation.",
+   "quote": "We operationalize believable performance reduction along three axes: target calibration, item-difficulty structure, and error-distribution similarity",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6989415170874586
+  },
+  {
+   "id": "2611.14769",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "This is a must-read paper for LLM evaluation methodology, analyzing vulnerabilities and manipulation strategies in arena-style model evaluations and online leaderboards.",
+   "quote": "Arena-style rankings of language models are a widely used evaluation framework in online leaderboards, research papers, and model evaluation in production.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6816059412051237
+  },
+  {
+   "id": "2611.15170",
+   "score": 9,
+   "theme": "Tool use and MCP",
+   "reason": "It explores how students evaluate AI agent skills and authorization decisions regarding what tools and capabilities agents are permitted to use.",
+   "quote": "Skills are add-ons that can shape an agent's behavior through natural language instructions",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6573830415972395
+  },
+  {
+   "id": "2611.16466",
+   "score": 8,
+   "theme": "LLM agents and evaluation",
+   "reason": "It explores how planning agents can improve their task execution by dynamically revising and reshaping their search space through interaction.",
+   "quote": "Planning agents and benchmarks treat a user's initial specification as fixed.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7166492658078243
+  },
+  {
+   "id": "2611.17239",
+   "score": 8,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper addresses the challenges of evaluating interactive LLM systems where users and models mutually adapt during task execution.",
+   "quote": "In interactive systems where users engage with LLMs, users are adaptive and, after observing LLM responses, can change their prompting strategy",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7158728774767311
+  },
+  {
+   "id": "2611.16856",
+   "score": 8,
+   "theme": "Local and small models",
+   "reason": "This paper evaluates the environmental impact and performance footprint of parameter-efficient fine-tuning using LoRA for smaller language models.",
+   "quote": "Federated Learning (FL) with Parameter-Efficient Fine-Tuning (PEFT) enables efficient adaptation of Large Language Models (LLMs)",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7131959611229148
+  },
+  {
+   "id": "2611.13454",
+   "score": 8,
+   "theme": "LLM agents and evaluation",
+   "reason": "Clearly relevant to agent evaluation and multi-agent systems, it introduces a coverage-aware message routing procedure for multi-agent reasoning.",
+   "quote": "We introduce SafeRoute-MAS, a coverage-aware, risk-calibrated procedure that keeps all specialist messages or removes one using only pre-integration information.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6822355586565202
+  },
+  {
+   "id": "2611.17856",
+   "score": 8,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper presents a visual analytics system and methodology for diagnosing interpretability failures in automated LLM evaluation processes.",
+   "quote": "To address these challenges, we present DECODE, a visual analytics system that reintroduces human oversight",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6583465705014001
+  },
+  {
+   "id": "2611.17867",
+   "score": 7,
+   "theme": "RAG with evidence",
+   "reason": "The paper discusses encoder-based evidence prediction and citation-aware training, which aligns with grounding and verification tasks.",
+   "quote": "An auxiliary head, trained on human-marked evidence and on labels selected with a reward adapted from SelfCite, predicts in the same pass the sentences annotated as support",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6956409843168071
+  },
+  {
+   "id": "2611.15569",
+   "score": 6,
+   "theme": "Local and small models",
+   "reason": "The paper focuses on memory-efficient KV cache compression techniques for vision-language models, relevant for on-device deployment.",
+   "quote": "TraceKV, a training-free low-rank KV compression framework that unifies on-policy calibration, sensitivity-aware SVD, and global rank allocation",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6963039948795665
+  },
+  {
+   "id": "2611.16375",
+   "score": 6,
+   "theme": "Local and small models",
+   "reason": "It explores persistent latent-state adaptation for small models, offering a method to handle sequential inference without large context windows.",
+   "quote": "A modular read-transition-write architecture separates observation encoding, latent dynamics, and predictor adaptation.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6901442805754509
+  },
+  {
+   "id": "2611.15315",
+   "score": 6,
+   "theme": "RAG with evidence",
+   "reason": "This paper is partly relevant as it presents a decoupled long-term memory system that retrieves and preserves past evidence across successive language models.",
+   "quote": "Each new model must be able to retrieve past evidence, track revisions, and add new observations.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6895077247124759
+  },
+  {
+   "id": "2611.17834",
+   "score": 6,
+   "theme": "LLM agents and evaluation",
+   "reason": "It discusses training AI reviewers to evaluate paper soundness, which relates to LLM-as-judge and evaluation methodology.",
+   "quote": "we focus solely on evaluating soundness, the most important and objective criterion",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6734580554859073
+  },
+  {
+   "id": "2611.16455",
+   "score": 6,
+   "theme": "LLM agents and evaluation",
+   "reason": "It examines a debate framework for multi-agent alignment in question-answering settings, tying into multi-agent systems.",
+   "quote": "We show specifically that a debate framework where the agents can further reason and behave in a subgame perfect equilibrium manner will lead to a more predictable result",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6665842727539264
+  },
+  {
+   "id": "2611.15744",
+   "score": 6,
+   "theme": "AI for games and player data",
+   "reason": "The paper focuses on model-based reinforcement learning for parameterized action spaces, which is adjacent to game-playing agents.",
+   "quote": "Parameterized-action MDPs (PAMDPs) ask an agent to choose a discrete action together with continuous parameters",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.655964304642547
+  },
+  {
+   "id": "2611.17870",
+   "score": 6,
+   "theme": "LLM agents and evaluation",
+   "reason": "It introduces a benchmark for evaluating vision-language models on musical scores, sharing evaluation methodology interests though in a different domain.",
+   "quote": "We introduce OmniScore-Bench, an evaluation of OMR capabilities in VLMs through 3,000 questions",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6526741915925611
+  },
+  {
+   "id": "2611.14051",
+   "score": 5,
+   "theme": "Local and small models",
+   "reason": "It investigates KV cache reuse for inference optimization, which is highly relevant to efficient deployment and local model performance.",
+   "quote": "Reusing key--value (KV) caches across language model updates could avoid repeated computation of shared context",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6984371411112698
+  },
+  {
+   "id": "2611.18230",
+   "score": 5,
+   "theme": "LLM agents and evaluation",
+   "reason": "Partly relevant because it studies value personalization for LLM-controlled assistant robots, aligning with agent application domains.",
+   "quote": "Personal assistant robots powered by large language models (LLMs) are likely to enter everyday life within the next decade",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.680431322661053
+  },
+  {
+   "id": "2611.18453",
+   "score": 5,
+   "theme": "RAG with evidence",
+   "reason": "The work targets uncertainty quantification and claim-level factuality in language models, sharing some common ground with hallucination detection.",
+   "quote": "extends to claim-level factuality without retraining",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6710186796718488
+  },
+  {
+   "id": "2611.18274",
+   "score": 5,
+   "theme": "LLM agents and evaluation",
+   "reason": "It explores activation steering and trajectory-aware control during generation, which is somewhat relevant to agent planning and control.",
+   "quote": "The second, Closed-Loop Adaptive Bernoulli Steering (CLABS), is trajectory aware",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6692287096213068
+  },
+  {
+   "id": "2611.14467",
+   "score": 5,
+   "theme": "Local and small models",
+   "reason": "It discusses post-training policy optimization and coverage collapse for language models, but lacks a strong focus on small models or the reader's other primary interest areas.",
+   "quote": "Policy optimization is central to language model post-training",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6612029390953944
+  },
+  {
+   "id": "2611.16260",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "The paper explores efficient fine-tuning and low-rank adaptation techniques for small language models in multilingual speech recognition contexts.",
+   "quote": "Low-rank adapters on 4% of the weights come within 1.1 points of tuning everything",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.7019397667502625
+  },
+  {
+   "id": "2611.16345",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "This is an adjacent topic on inference acceleration for large multimodal models rather than small on-device models or agent evaluation.",
+   "quote": "Together, DRAMA achieves an average 18.67 times inference speedup across six vision-language benchmarks without training",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6806327668232148
+  },
+  {
+   "id": "2611.13534",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "Adjacent topic focused on neural scaling laws and compute-optimal allocations rather than practical small models or RAG.",
+   "quote": "",
+   "quote_ok": false,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6795427169237527
+  },
+  {
+   "id": "2611.17846",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "It studies abliteration and refusal removal across various open-weight LLMs, which is adjacent to model modification topics.",
+   "quote": "Abliteration, a fine-tuning-free weight edit, removes refusal from open-weight large language models (LLMs)",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.66498497431945
+  },
+  {
+   "id": "2611.17836",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "It evaluates grammatical knowledge in language models using small-scale training corpora, serving as an adjacent topic to small language model capabilities.",
+   "quote": "Evaluating grammatical knowledge in language models requires benchmarks that cover diverse linguistic phenomena",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6530282148217866
+  },
+  {
+   "id": "2611.16642",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "Only an adjacent topic on dataset distillation and synthetic samples for classification models rather than language models.",
+   "quote": "The task of dataset distillation concerns the learning of a small set of synthetic samples that can serve as an effective replacement for a large real dataset",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6793866202035759
+  },
+  {
+   "id": "2611.18272",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "The paper focuses on memory forensics and extracting activations from live GPU models rather than small model efficiency or agent evaluation.",
+   "quote": "acquiring per-layer residual-stream activations from a live GPU process",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6755915595803664
+  },
+  {
+   "id": "2611.16228",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "It investigates reinforcement learning impacts on a mixture-of-experts model covering various languages, which is adjacent to model tuning.",
+   "quote": "We run reinforcement learning (RL) with GRPO across four environments, starting from a supervised fine-tuned 30B-A3B mixture-of-experts model",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6752360897641558
+  },
+  {
+   "id": "2611.16608",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "While it deals with compact models and CPU training constraints, the focus is entirely on medical image classification rather than language models.",
+   "quote": "The results demonstrate the feasibility of CPU-only training on the tested platform",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6624457007149586
+  },
+  {
+   "id": "2611.18319",
+   "score": 2,
+   "theme": "RAG with evidence",
+   "reason": "The paper is about Latin literature text reuse and word-level alignment, which is unrelated to the reader's interests.",
+   "quote": "Detecting an intertextual reference is only the first step; philologists also need to know how a later author reworked the source",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6676751399657228
+  },
+  {
+   "id": "2611.17529",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.6510064446931106
+  },
+  {
+   "id": "2611.15000",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.6507820525240349
+  },
+  {
+   "id": "2611.18035",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6506185981640841
+  },
+  {
+   "id": "2611.14284",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.6501387595959941
+  },
+  {
+   "id": "2611.16424",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.6479796586211293
+  },
+  {
+   "id": "2611.18464",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6467627751914343
+  },
+  {
+   "id": "2611.18157",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.646466196498052
+  },
+  {
+   "id": "2611.13972",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.6428204371942655
+  },
+  {
+   "id": "2611.14818",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6373460637645171
+  },
+  {
+   "id": "2611.16913",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.6371055115987442
+  },
+  {
+   "id": "2611.16108",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.6364645951043728
+  },
+  {
+   "id": "2611.18078",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.6346878978442655
+  },
+  {
+   "id": "2611.14425",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6334834925192308
+  },
+  {
+   "id": "2611.15329",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6314811152734157
+  },
+  {
+   "id": "2611.14357",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.629660040577399
+  },
+  {
+   "id": "2611.14483",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.6296248145003968
+  },
+  {
+   "id": "2611.14804",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.627743278515767
+  },
+  {
+   "id": "2611.16718",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6272154372892536
+  },
+  {
+   "id": "2611.17107",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.6267322709130402
+  },
+  {
+   "id": "2611.15051",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6239698432130466
+  },
+  {
+   "id": "2611.14519",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6231456737111762
+  },
+  {
+   "id": "2611.14415",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.6221099405176164
+  },
+  {
+   "id": "2611.16726",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.6219680121280086
+  },
+  {
+   "id": "2611.17126",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6214188331272341
+  },
+  {
+   "id": "2611.13990",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.621135872164081
+  },
+  {
+   "id": "2611.17710",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.6155013660862066
+  },
+  {
+   "id": "2611.15981",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.6116904312048811
+  },
+  {
+   "id": "2611.13941",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.610558781312963
+  },
+  {
+   "id": "2611.14374",
+   "score": null,
+   "theme": "AI for games and player data",
+   "embed": 0.6086076361622506
+  },
+  {
+   "id": "2611.13572",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6085091789586129
+  },
+  {
+   "id": "2611.13794",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.6061874116558544
+  },
+  {
+   "id": "2611.13957",
+   "score": null,
+   "theme": "AI for games and player data",
+   "embed": 0.6058863912050918
+  },
+  {
+   "id": "2611.14956",
+   "score": null,
+   "theme": "AI for games and player data",
+   "embed": 0.6053694682800826
+  },
+  {
+   "id": "2611.13868",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.6049641261660025
+  },
+  {
+   "id": "2611.15895",
+   "score": null,
+   "theme": "AI for games and player data",
+   "embed": 0.6039643785557602
+  },
+  {
+   "id": "2611.16003",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.6030298999575409
+  },
+  {
+   "id": "2611.14126",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.6015279743794005
+  },
+  {
+   "id": "2611.15990",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.601388245196107
+  },
+  {
+   "id": "2611.18144",
+   "score": null,
+   "theme": "AI for games and player data",
+   "embed": 0.6005807024004884
+  },
+  {
+   "id": "2611.14328",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5975304670889858
+  },
+  {
+   "id": "2611.13755",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5973897137678879
+  },
+  {
+   "id": "2611.18333",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.597069607026248
+  },
+  {
+   "id": "2611.17650",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5960342243276723
+  },
+  {
+   "id": "2611.17722",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5951037466816442
+  },
+  {
+   "id": "2611.16361",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.5947865077294117
+  },
+  {
+   "id": "2611.17577",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5932201795212741
+  },
+  {
+   "id": "2611.13517",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5928592574963704
+  },
+  {
+   "id": "2611.16031",
+   "score": null,
+   "theme": "AI for games and player data",
+   "embed": 0.592408433600406
+  },
+  {
+   "id": "2611.14603",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5886867132877948
+  },
+  {
+   "id": "2611.18469",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5864047834324478
+  },
+  {
+   "id": "2611.15155",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.5850146773756248
+  },
+  {
+   "id": "2611.14093",
+   "score": null,
+   "theme": "AI for games and player data",
+   "embed": 0.5843166505444277
+  },
+  {
+   "id": "2611.15073",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.5831236654572731
+  },
+  {
+   "id": "2611.16356",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5820863884420231
+  },
+  {
+   "id": "2611.14878",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5797945957212722
+  },
+  {
+   "id": "2611.15162",
+   "score": null,
+   "theme": "Tool use and MCP",
+   "embed": 0.5781614804125182
+  },
+  {
+   "id": "2611.14811",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5736746861720273
+  },
+  {
+   "id": "2611.14900",
+   "score": null,
+   "theme": "Local and small models",
+   "embed": 0.5717537767494646
+  },
+  {
+   "id": "2611.14853",
+   "score": null,
+   "theme": "LLM agents and evaluation",
+   "embed": 0.5687408677781353
+  },
+  {
+   "id": "2611.17998",
+   "score": null,
+   "theme": "RAG with evidence",
+   "embed": 0.5665184696514921
+  }
+ ],
+ "llm_all": [
+  {
+   "id": "2611.14963",
+   "score": 10,
+   "theme": "LLM agents and evaluation",
+   "reason": "This is a direct application of agentic pipelines for task execution and refactoring, including a comparative evaluation of agent designs.",
+   "quote": "Agentic LLM pipelines can combine contextual detection, transformation selection, and patch generation.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6964736821378517
+  },
+  {
+   "id": "2611.15925",
+   "score": 10,
+   "theme": "LLM agents and evaluation",
+   "reason": "This is a must-read paper that introduces a rigorous new benchmark to evaluate LLM limitations and expose vulnerabilities in machine unlearning.",
+   "quote": "To quantify this limitation, we introduce ShadowBench, a rigorously hardened, shortcut-resistant benchmark designed to evaluate Latent Entity Association",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6771493295313261
+  },
+  {
+   "id": "2611.15835",
+   "score": 10,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper directly addresses the pre-deployment evaluation and failure mode analysis of AI agents using a rigorous statistical framework.",
+   "quote": "On SWE-Chat, a dataset of real-world coding agent traces",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6629182288874998
+  },
+  {
+   "id": "2611.14850",
+   "score": 9,
+   "theme": "Local and small models",
+   "reason": "This paper focuses on reasoning distillation for small language models like Qwen3 1.7B and 4B to improve efficiency and reduce memory requirements.",
+   "quote": "Our main study distills Qwen3 4B -> 1.7B.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7566704613245694
+  },
+  {
+   "id": "2611.17440",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper analyzes coding agent trajectories and behavior to better understand and evaluate agent performance beyond binary task success.",
+   "quote": "Standard coding-agent benchmarks primarily evaluate binary task success, treating execution as a black box",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7481291405432006
+  },
+  {
+   "id": "2611.17696",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "It investigates agent harnesses and externalized control assets to improve the reliability of long-horizon business workflows.",
+   "quote": "We study whether such workflows can be made reliable without changing the language model.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7394457754823851
+  },
+  {
+   "id": "2611.15515",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper introduces a runtime architecture and evaluation framework for long-lived personal AI agents with runtime contracts and resource allocation.",
+   "quote": "We formalize an incentive not as text in a prompt but as a runtime contract over the agent's operating point",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7335303364398303
+  },
+  {
+   "id": "2611.15777",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "This work introduces a comprehensive benchmark and evaluation methodology for assessing the capability spectrum and decision reliability of System One models.",
+   "quote": "We introduce SO-Arena, a benchmark characterizing the capability spectrum and decision reliability of System One models",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7222275700693728
+  },
+  {
+   "id": "2611.14901",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "This study directly addresses multi-agent deliberation and its impact on decision-making, which is central to evaluating agentic workflows.",
+   "quote": "Multi-agent deliberation (MAD), where multiple LLMs engage in structured discussion, improves AI performance on many benchmarks",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.7011684852527237
+  },
+  {
+   "id": "2611.15568",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper provides a rigorous methodology for evaluating model capability and failure analysis, which is critical for agent evaluation.",
+   "quote": "We operationalize believable performance reduction along three axes: target calibration, item-difficulty structure, and error-distribution similarity",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6989415170874586
+  },
+  {
+   "id": "2611.14769",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "This is a must-read paper for LLM evaluation methodology, analyzing vulnerabilities and manipulation strategies in arena-style model evaluations and online leaderboards.",
+   "quote": "Arena-style rankings of language models are a widely used evaluation framework in online leaderboards, research papers, and model evaluation in production.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6816059412051237
+  },
+  {
+   "id": "2611.15170",
+   "score": 9,
+   "theme": "Tool use and MCP",
+   "reason": "It explores how students evaluate AI agent skills and authorization decisions regarding what tools and capabilities agents are permitted to use.",
+   "quote": "Skills are add-ons that can shape an agent's behavior through natural language instructions",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6573830415972395
+  },
+  {
+   "id": "2611.16108",
+   "score": 9,
+   "theme": "LLM agents and evaluation",
+   "reason": "This study provides valuable qualitative insights into how humans interact with and delegate tasks to LLMs, directly informing agent evaluation and human-in-the-loop design.",
+   "quote": "participants trusted the LLM, they varied widely in how and whether they delegated debugging tasks",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6364645951043728
+  },
+  {
+   "id": "2611.15329",
+   "score": 9,
+   "theme": "Local and small models",
+   "reason": "This paper presents a highly efficient, small-parameter foundation model that outperforms larger counterparts, directly addressing the interest in small model capabilities.",
+   "quote": "TabOmics, a small, open family of tabular foundation models with 7.3M parameters",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6314811152734157
+  },
+  {
+   "id": "2611.16466",
+   "score": 8,
+   "theme": "LLM agents and evaluation",
+   "reason": "It explores how planning agents can improve their task execution by dynamically revising and reshaping their search space through interaction.",
+   "quote": "Planning agents and benchmarks treat a user's initial specification as fixed.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7166492658078243
+  },
+  {
+   "id": "2611.17239",
+   "score": 8,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper addresses the challenges of evaluating interactive LLM systems where users and models mutually adapt during task execution.",
+   "quote": "In interactive systems where users engage with LLMs, users are adaptive and, after observing LLM responses, can change their prompting strategy",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7158728774767311
+  },
+  {
+   "id": "2611.16856",
+   "score": 8,
+   "theme": "Local and small models",
+   "reason": "This paper evaluates the environmental impact and performance footprint of parameter-efficient fine-tuning using LoRA for smaller language models.",
+   "quote": "Federated Learning (FL) with Parameter-Efficient Fine-Tuning (PEFT) enables efficient adaptation of Large Language Models (LLMs)",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.7131959611229148
+  },
+  {
+   "id": "2611.13454",
+   "score": 8,
+   "theme": "LLM agents and evaluation",
+   "reason": "Clearly relevant to agent evaluation and multi-agent systems, it introduces a coverage-aware message routing procedure for multi-agent reasoning.",
+   "quote": "We introduce SafeRoute-MAS, a coverage-aware, risk-calibrated procedure that keeps all specialist messages or removes one using only pre-integration information.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6822355586565202
+  },
+  {
+   "id": "2611.17856",
+   "score": 8,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper presents a visual analytics system and methodology for diagnosing interpretability failures in automated LLM evaluation processes.",
+   "quote": "To address these challenges, we present DECODE, a visual analytics system that reintroduces human oversight",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6583465705014001
+  },
+  {
+   "id": "2611.16913",
+   "score": 8,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper involves training an agentic policy using demonstrations and reinforcement learning to solve complex engineering tasks, highly relevant to agentic task execution.",
+   "quote": "CADET trains a routing policy on these demonstrations with behavior cloning and fine-tunes it with reinforcement learning",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6371055115987442
+  },
+  {
+   "id": "2611.18078",
+   "score": 8,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper describes a vision-language agent that performs multi-step physical reconstruction and verification, aligning well with agentic planning and execution.",
+   "quote": "A vision-language coding agent synthesizes separable visual meshes and declarative physical models",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6346878978442655
+  },
+  {
+   "id": "2611.17867",
+   "score": 7,
+   "theme": "RAG with evidence",
+   "reason": "The paper discusses encoder-based evidence prediction and citation-aware training, which aligns with grounding and verification tasks.",
+   "quote": "An auxiliary head, trained on human-marked evidence and on labels selected with a reward adapted from SelfCite, predicts in the same pass the sentences annotated as support",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6956409843168071
+  },
+  {
+   "id": "2611.15000",
+   "score": 7,
+   "theme": "LLM agents and evaluation",
+   "reason": "It presents a framework where AI agents use a closed loop of verification and benchmarking for quantum simulation.",
+   "quote": "a research framework in which AI agents combine a closed loop of verification and benchmarking with open exploration",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6507820525240349
+  },
+  {
+   "id": "2611.18157",
+   "score": 7,
+   "theme": "LLM agents and evaluation",
+   "reason": "It integrates transformers and LLMs into a multi-layered pipeline for generating BPMN diagrams from text.",
+   "quote": "This paper proposes a solution for generating BPMN models from natural language descriptions through a multi-layered pipeline",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.646466196498052
+  },
+  {
+   "id": "2611.15569",
+   "score": 6,
+   "theme": "Local and small models",
+   "reason": "The paper focuses on memory-efficient KV cache compression techniques for vision-language models, relevant for on-device deployment.",
+   "quote": "TraceKV, a training-free low-rank KV compression framework that unifies on-policy calibration, sensitivity-aware SVD, and global rank allocation",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6963039948795665
+  },
+  {
+   "id": "2611.16375",
+   "score": 6,
+   "theme": "Local and small models",
+   "reason": "It explores persistent latent-state adaptation for small models, offering a method to handle sequential inference without large context windows.",
+   "quote": "A modular read-transition-write architecture separates observation encoding, latent dynamics, and predictor adaptation.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6901442805754509
+  },
+  {
+   "id": "2611.15315",
+   "score": 6,
+   "theme": "RAG with evidence",
+   "reason": "This paper is partly relevant as it presents a decoupled long-term memory system that retrieves and preserves past evidence across successive language models.",
+   "quote": "Each new model must be able to retrieve past evidence, track revisions, and add new observations.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6895077247124759
+  },
+  {
+   "id": "2611.17834",
+   "score": 6,
+   "theme": "LLM agents and evaluation",
+   "reason": "It discusses training AI reviewers to evaluate paper soundness, which relates to LLM-as-judge and evaluation methodology.",
+   "quote": "we focus solely on evaluating soundness, the most important and objective criterion",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6734580554859073
+  },
+  {
+   "id": "2611.16455",
+   "score": 6,
+   "theme": "LLM agents and evaluation",
+   "reason": "It examines a debate framework for multi-agent alignment in question-answering settings, tying into multi-agent systems.",
+   "quote": "We show specifically that a debate framework where the agents can further reason and behave in a subgame perfect equilibrium manner will lead to a more predictable result",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6665842727539264
+  },
+  {
+   "id": "2611.15744",
+   "score": 6,
+   "theme": "AI for games and player data",
+   "reason": "The paper focuses on model-based reinforcement learning for parameterized action spaces, which is adjacent to game-playing agents.",
+   "quote": "Parameterized-action MDPs (PAMDPs) ask an agent to choose a discrete action together with continuous parameters",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.655964304642547
+  },
+  {
+   "id": "2611.17870",
+   "score": 6,
+   "theme": "LLM agents and evaluation",
+   "reason": "It introduces a benchmark for evaluating vision-language models on musical scores, sharing evaluation methodology interests though in a different domain.",
+   "quote": "We introduce OmniScore-Bench, an evaluation of OMR capabilities in VLMs through 3,000 questions",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6526741915925611
+  },
+  {
+   "id": "2611.18035",
+   "score": 6,
+   "theme": "Local and small models",
+   "reason": "This paper presents an on-device runtime designed to run reinforcement learning efficiently on an embedded GPU.",
+   "quote": "On-device reinforcement learning runs a periodic actor and a learner on one embedded GPU shared with other workloads",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6506185981640841
+  },
+  {
+   "id": "2611.14051",
+   "score": 5,
+   "theme": "Local and small models",
+   "reason": "It investigates KV cache reuse for inference optimization, which is highly relevant to efficient deployment and local model performance.",
+   "quote": "Reusing key--value (KV) caches across language model updates could avoid repeated computation of shared context",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6984371411112698
+  },
+  {
+   "id": "2611.18230",
+   "score": 5,
+   "theme": "LLM agents and evaluation",
+   "reason": "Partly relevant because it studies value personalization for LLM-controlled assistant robots, aligning with agent application domains.",
+   "quote": "Personal assistant robots powered by large language models (LLMs) are likely to enter everyday life within the next decade",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.680431322661053
+  },
+  {
+   "id": "2611.18453",
+   "score": 5,
+   "theme": "RAG with evidence",
+   "reason": "The work targets uncertainty quantification and claim-level factuality in language models, sharing some common ground with hallucination detection.",
+   "quote": "extends to claim-level factuality without retraining",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6710186796718488
+  },
+  {
+   "id": "2611.18274",
+   "score": 5,
+   "theme": "LLM agents and evaluation",
+   "reason": "It explores activation steering and trajectory-aware control during generation, which is somewhat relevant to agent planning and control.",
+   "quote": "The second, Closed-Loop Adaptive Bernoulli Steering (CLABS), is trajectory aware",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6692287096213068
+  },
+  {
+   "id": "2611.14467",
+   "score": 5,
+   "theme": "Local and small models",
+   "reason": "It discusses post-training policy optimization and coverage collapse for language models, but lacks a strong focus on small models or the reader's other primary interest areas.",
+   "quote": "Policy optimization is central to language model post-training",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6612029390953944
+  },
+  {
+   "id": "2611.16424",
+   "score": 5,
+   "theme": "LLM agents and evaluation",
+   "reason": "It introduces a benchmark for physically grounded video captioning to assess annotation quality and guide training-data refinement.",
+   "quote": "we introduce PhysCapBench, to our knowledge the first unified physical-caption benchmark spanning all three domains",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6479796586211293
+  },
+  {
+   "id": "2611.18464",
+   "score": 5,
+   "theme": "Local and small models",
+   "reason": "The paper proposes an efficient zero-lookahead state space model fusing a typing decoder with a language model.",
+   "quote": "we propose a fully causal, zero-lookahead sEMG typing decoder built on a state space model",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6467627751914343
+  },
+  {
+   "id": "2611.14357",
+   "score": 5,
+   "theme": "Local and small models",
+   "reason": "The paper explores efficient state utilization in recurrent models, which is relevant to the interest in efficient inference and small model architectures.",
+   "quote": "In practice only the first is utilised and the initial state is unused by convention.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.629660040577399
+  },
+  {
+   "id": "2611.14483",
+   "score": 5,
+   "theme": "LLM agents and evaluation",
+   "reason": "Mechanistic interpretability is highly relevant to the failure analysis and reliability evaluation of LLM agents.",
+   "quote": "attention is shifting from what can be observed inside a model to how those observations support mechanistic explanations.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6296248145003968
+  },
+  {
+   "id": "2611.13957",
+   "score": 5,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper presents an audio-visual conversation corpus and benchmark for turn-taking prediction in conversational agents, making it partly relevant to agent evaluation.",
+   "quote": "Predicting who will speak next, and when, is a prerequisite for conversational agents and social robots that take turns",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6058863912050918
+  },
+  {
+   "id": "2611.16260",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "The paper explores efficient fine-tuning and low-rank adaptation techniques for small language models in multilingual speech recognition contexts.",
+   "quote": "Low-rank adapters on 4% of the weights come within 1.1 points of tuning everything",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.7019397667502625
+  },
+  {
+   "id": "2611.16345",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "This is an adjacent topic on inference acceleration for large multimodal models rather than small on-device models or agent evaluation.",
+   "quote": "Together, DRAMA achieves an average 18.67 times inference speedup across six vision-language benchmarks without training",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6806327668232148
+  },
+  {
+   "id": "2611.13534",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "Adjacent topic focused on neural scaling laws and compute-optimal allocations rather than practical small models or RAG.",
+   "quote": "",
+   "quote_ok": false,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6795427169237527
+  },
+  {
+   "id": "2611.17846",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "It studies abliteration and refusal removal across various open-weight LLMs, which is adjacent to model modification topics.",
+   "quote": "Abliteration, a fine-tuning-free weight edit, removes refusal from open-weight large language models (LLMs)",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.66498497431945
+  },
+  {
+   "id": "2611.17836",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "It evaluates grammatical knowledge in language models using small-scale training corpora, serving as an adjacent topic to small language model capabilities.",
+   "quote": "Evaluating grammatical knowledge in language models requires benchmarks that cover diverse linguistic phenomena",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6530282148217866
+  },
+  {
+   "id": "2611.14284",
+   "score": 4,
+   "theme": "LLM agents and evaluation",
+   "reason": "The paper surveys and analyzes the fragmented evaluation practices and metrics used for ambient AI scribes in healthcare.",
+   "quote": "While research evaluating these tools has expanded quickly, there are no agreed-upon protocols or standardized metrics",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6501387595959941
+  },
+  {
+   "id": "2611.14425",
+   "score": 4,
+   "theme": "Local and small models",
+   "reason": "While focused on time-series foundation models, the evaluation of model performance under varying constraints is adjacent to efficient model deployment interests.",
+   "quote": "This is the first study to place SF-invariance at the core of TSFM evaluations.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6334834925192308
+  },
+  {
+   "id": "2611.16726",
+   "score": 4,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper touches on agentic AI for medical reimbursement claims within a broad epistemic framework for AI, making it an adjacent topic.",
+   "quote": "quantitative financial risk, actuarial modeling in health insurance and agentic AI for medical reimbursement claims",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6219680121280086
+  },
+  {
+   "id": "2611.16642",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "Only an adjacent topic on dataset distillation and synthetic samples for classification models rather than language models.",
+   "quote": "The task of dataset distillation concerns the learning of a small set of synthetic samples that can serve as an effective replacement for a large real dataset",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6793866202035759
+  },
+  {
+   "id": "2611.18272",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "The paper focuses on memory forensics and extracting activations from live GPU models rather than small model efficiency or agent evaluation.",
+   "quote": "acquiring per-layer residual-stream activations from a live GPU process",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6755915595803664
+  },
+  {
+   "id": "2611.16228",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "It investigates reinforcement learning impacts on a mixture-of-experts model covering various languages, which is adjacent to model tuning.",
+   "quote": "We run reinforcement learning (RL) with GRPO across four environments, starting from a supervised fine-tuned 30B-A3B mixture-of-experts model",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6752360897641558
+  },
+  {
+   "id": "2611.16608",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "While it deals with compact models and CPU training constraints, the focus is entirely on medical image classification rather than language models.",
+   "quote": "The results demonstrate the feasibility of CPU-only training on the tested platform",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6624457007149586
+  },
+  {
+   "id": "2611.17529",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "The paper focuses on improving latent goal costs for visual world-model planning using a small residual adapter.",
+   "quote": "We fit a small residual adapter on top of frozen I-JEPA embeddings",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6510064446931106
+  },
+  {
+   "id": "2611.13972",
+   "score": 3,
+   "theme": "RAG with evidence",
+   "reason": "The paper examines data quality challenges in multimodal recommender systems, including hallucinated content from LLMs.",
+   "quote": "Issues include noise from fake reviews, hallucinated content from LLMs, modality contradictions, and demographic bias",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6428204371942655
+  },
+  {
+   "id": "2611.14818",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "The paper focuses on tokenizer efficiency and linguistic structure in small models, which is adjacent to the interest in efficient model deployment.",
+   "quote": "In small from-scratch models, the readout choice moves F1 by up to 13.4 points",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.6373460637645171
+  },
+  {
+   "id": "2611.14804",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "This paper is adjacent because it uses a tabular foundation model to generate and augment small datasets, though it does not focus on language models.",
+   "quote": "This paper proposes GenPFN, a training-free candidate generator guided by a pretrained tabular Prior-Data Fitted Network",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.627743278515767
+  },
+  {
+   "id": "2611.17107",
+   "score": 3,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper is adjacent as it discusses text classification and handling spurious correlations in NLP, but lacks agent-specific evaluation methods.",
+   "quote": "In NLP, models trained via Empirical Risk Minimization (ERM) often exploit spurious correlations",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6267322709130402
+  },
+  {
+   "id": "2611.15051",
+   "score": 3,
+   "theme": "RAG with evidence",
+   "reason": "This paper uses a multimodal foundation model for machinery fault diagnosis that matches queries against natural-language anchors, providing only an adjacent relevance to evidence retrieval.",
+   "quote": "Diagnosis is performed by matching these queries against natural-language fault-mode anchors rather than fixed class indices",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6239698432130466
+  },
+  {
+   "id": "2611.13990",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "This paper investigates information rates in linguistic units using transformer language models under limited budgets, which is only adjacent to the reader's interest in small model efficiency.",
+   "quote": "while all units are equivalent under a perfect language model, it makes sense to compare these under limited modelling budgets",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.621135872164081
+  },
+  {
+   "id": "2611.13868",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "This paper discusses general mechanistic interpretability of deep neural networks rather than language model agents or specific target topics.",
+   "quote": "Mechanistic interpretability aims to uncover the internal mechanisms of neural networks",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6049641261660025
+  },
+  {
+   "id": "2611.18333",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "The paper uses compact neural networks for physics-based retrievals, representing only an adjacent topic to efficient inference.",
+   "quote": "Compact multilayer perceptrons use the resulting spectral scores",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.597069607026248
+  },
+  {
+   "id": "2611.17650",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "This paper focuses on molecular generation using latent diffusion and encoders, which is only adjacent to small model distillation and inference.",
+   "quote": "",
+   "quote_ok": false,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5960342243276723
+  },
+  {
+   "id": "2611.16361",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "The paper deals with protein mutation prediction and distillation across biological models, which is only an adjacent topic.",
+   "quote": "unsupervised multi-source mutation preference distillation framework",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5947865077294117
+  },
+  {
+   "id": "2611.13517",
+   "score": 3,
+   "theme": "Local and small models",
+   "reason": "This paper discusses inertial odometry and sensor filtering, representing an adjacent topic regarding efficient system deployment.",
+   "quote": "Differentiable Filtering for Inertial Odometry (DFIO)",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5928592574963704
+  },
+  {
+   "id": "2611.14093",
+   "score": 3,
+   "theme": "AI for games and player data",
+   "reason": "The paper involves human-computer interaction and affective computing, which is adjacent to player modeling but lacks a direct connection to game design or agentic systems.",
+   "quote": "The BODYinTRANSIT-Lab dataset provides an experimentally controlled resource for cognitive neuroscience",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.5843166505444277
+  },
+  {
+   "id": "2611.14878",
+   "score": 3,
+   "theme": "AI for games and player data",
+   "reason": "The paper uses lightweight deep learning for sensor data, which is adjacent to behavioral analytics but not focused on the requested AI for games theme.",
+   "quote": "the pipeline consisting of signal processing and lightweight deep learning",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.5797945957212722
+  },
+  {
+   "id": "2611.15162",
+   "score": 3,
+   "theme": "Tool use and MCP",
+   "reason": "The paper discusses adversarial attacks on systems, which is adjacent to the security concerns of tool use and model-based agents, but not directly about LLMs.",
+   "quote": "False data injection (FDI) attacks can distort power system state estimation",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.5781614804125182
+  },
+  {
+   "id": "2611.14853",
+   "score": 3,
+   "theme": "LLM agents and evaluation",
+   "reason": "While it touches on robotic agents and multi-agent group interactions, it is focused on humanoid robotics and social force models rather than language model agents.",
+   "quote": "socially appropriate repositioning behaviors in groups of humanoid robots",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5687408677781353
+  },
+  {
+   "id": "2611.18319",
+   "score": 2,
+   "theme": "RAG with evidence",
+   "reason": "The paper is about Latin literature text reuse and word-level alignment, which is unrelated to the reader's interests.",
+   "quote": "Detecting an intertextual reference is only the first step; philologists also need to know how a later author reworked the source",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6676751399657228
+  },
+  {
+   "id": "2611.14519",
+   "score": 2,
+   "theme": "Local and small models",
+   "reason": "This paper is largely unrelated to the reader's interests, focusing on foundation model adaptation for medical image segmentation.",
+   "quote": "Foundation models pretrained on large natural-image collections are increasingly adapted for medical image segmentation",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6231456737111762
+  },
+  {
+   "id": "2611.14415",
+   "score": 2,
+   "theme": "Local and small models",
+   "reason": "This paper is unrelated, studying post-hoc disentanglement of audio foundation models for music similarity.",
+   "quote": "We instead present a systematic study of post-hoc disentanglement, adapting CSN to gate frozen pretrained embeddings.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6221099405176164
+  },
+  {
+   "id": "2611.17710",
+   "score": 2,
+   "theme": "Local and small models",
+   "reason": "The paper focuses on cross-linguistic acoustic biomarkers for dementia detection and is unrelated to the reader's core themes.",
+   "quote": "automated speech analysis has emerged as a promising approach for supporting dementia detection",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6155013660862066
+  },
+  {
+   "id": "2611.13794",
+   "score": 2,
+   "theme": "RAG with evidence",
+   "reason": "This paper focuses on multi-view signal representation for long-term time-series forecasting, having only a tangential connection to evidence representation.",
+   "quote": "AnchorMTS, which derives self-aligned visual and textual views from each observed window and uses them only to refine a complete numerical forecast",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6061874116558544
+  },
+  {
+   "id": "2611.15895",
+   "score": 2,
+   "theme": "Local and small models",
+   "reason": "This is a machine learning theory paper focusing on bilevel optimization and hypergradient estimation.",
+   "quote": "Bilevel optimization is a core tool in practical machine learning workflows",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6039643785557602
+  },
+  {
+   "id": "2611.16003",
+   "score": 2,
+   "theme": "Local and small models",
+   "reason": "The paper focuses on neural network verification for cyber-physical systems, which is irrelevant to the reader's focus.",
+   "quote": "verification domains in cyber-physical systems are rarely boxes",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6030298999575409
+  },
+  {
+   "id": "2611.14126",
+   "score": 2,
+   "theme": "Local and small models",
+   "reason": "This paper presents hierarchical graph representation learning with graph neural networks.",
+   "quote": "Hierarchical graph-level tasks that require reasoning over substructures",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6015279743794005
+  },
+  {
+   "id": "2611.15990",
+   "score": 2,
+   "theme": "Local and small models",
+   "reason": "This is a foundational deep learning study on variational training and the edge of stability.",
+   "quote": "Variational approaches in deep learning promise to deliver improved uncertainty quantification",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.601388245196107
+  },
+  {
+   "id": "2611.14328",
+   "score": 2,
+   "theme": "Local and small models",
+   "reason": "This paper focuses on stochastic diffusion sampling algorithms for image generation models.",
+   "quote": "Stochastic diffusion samplers often require substantially more neural function evaluations",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5975304670889858
+  },
+  {
+   "id": "2611.16031",
+   "score": 2,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper covers adversarial training and demographic parity in traditional classifiers, offering little relevance to language models or agents.",
+   "quote": "We formulate binary classification as projected gradient descent",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.592408433600406
+  },
+  {
+   "id": "2611.18469",
+   "score": 2,
+   "theme": "Local and small models",
+   "reason": "While it discusses efficient representation learning, it is focused on general computer vision tasks rather than the specific deployment or distillation of small language models.",
+   "quote": "ScoreCLR replaces the batch of explicit negative samples in contrastive methods",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.5864047834324478
+  },
+  {
+   "id": "2611.15155",
+   "score": 2,
+   "theme": "Local and small models",
+   "reason": "This is a time-series forecasting paper that does not intersect with the reader's interest in language models or agentic systems.",
+   "quote": "Multivariate time series forecasting often improves the prediction of a target",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.5850146773756248
+  },
+  {
+   "id": "2611.15073",
+   "score": 2,
+   "theme": "AI for games and player data",
+   "reason": "This paper focuses on anomaly detection in time-series data, which is not relevant to the reader's interest in game AI or player analytics.",
+   "quote": "Causality-aware scoring is common in multivariate time-series anomaly detection",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.5831236654572731
+  },
+  {
+   "id": "2611.16718",
+   "score": 1,
+   "theme": "Local and small models",
+   "reason": "This paper is unrelated to the reader's interests as it focuses on multimodal music representation learning using RWKV architectures.",
+   "quote": "In this work, we propose MusicRWKV, a multimodal music representation learning framework built upon the RWKV architecture.",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6272154372892536
+  },
+  {
+   "id": "2611.15981",
+   "score": 1,
+   "theme": "Tool use and MCP",
+   "reason": "This is a robotics paper on contact-rich removal manipulation using a force-sensing hand platform, which is unrelated to language model agents or tool use.",
+   "quote": "We study this setting as removal manipulation, where progress depends on evolving contact states",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6116904312048811
+  },
+  {
+   "id": "2611.13941",
+   "score": 1,
+   "theme": "RAG with evidence",
+   "reason": "This paper proposes a global precipitation estimation model from sparse satellite observations, which is completely unrelated to retrieval-augmented generation.",
+   "quote": "We present PARDIG, an artificial intelligence framework based on a spherical graph-mesh transformer architecture",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.610558781312963
+  },
+  {
+   "id": "2611.14374",
+   "score": 1,
+   "theme": "LLM agents and evaluation",
+   "reason": "This work explores hybrid offline reinforcement learning with Gaussian-process critics for polymerisation-reactor control, completely unrelated to LLM agents.",
+   "quote": "On the HOFLON polymerisation-reactor benchmark, removing the AAE from HOFLON led to 4 failed start-ups",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6086076361622506
+  },
+  {
+   "id": "2611.13572",
+   "score": 1,
+   "theme": "AI for games and player data",
+   "reason": "This paper addresses joint-embedding predictive architectures for financial time series, which is unrelated to the reader's interest in games and player data.",
+   "quote": "Building on this insight, we introduce Market-Conditioned JEPA (MC-JEPA), a joint-embedding predictive architecture for financial time series",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6085091789586129
+  },
+  {
+   "id": "2611.18144",
+   "score": 1,
+   "theme": "Local and small models",
+   "reason": "This paper is about manufacturing-informed generative design and shape optimization of sheet panels in automotive engineering.",
+   "quote": "Generative design of formed sheet panels must preserve geometric manufacturing conditions",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6005807024004884
+  },
+  {
+   "id": "2611.14603",
+   "score": 1,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper focuses on theoretical AI safety and singular learning theory, which is unrelated to the practical agent and evaluation topics requested.",
+   "quote": "Understanding the persistence of learned behaviors in AI safety motivates an investigation",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.5886867132877948
+  },
+  {
+   "id": "2611.16356",
+   "score": 1,
+   "theme": "Local and small models",
+   "reason": "This is a specialized paper on geophysical modeling and neural operators, which is unrelated to the reader's interests.",
+   "quote": "Accurate forecasting of Earth's dynamic systems is vital in geophysics",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.1-flash-lite",
+   "embed": 0.5820863884420231
+  },
+  {
+   "id": "2611.17126",
+   "score": 0,
+   "theme": "Local and small models",
+   "reason": "This paper is completely unrelated, presenting a real-time neural compression framework for distributed fiber-optic sensing.",
+   "quote": "We present STeP-C (Spatio-Temporal Predictive Compression), a neural compression framework that decouples spatial encoding",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6214188331272341
+  },
+  {
+   "id": "2611.14956",
+   "score": 0,
+   "theme": "Local and small models",
+   "reason": "This paper is about molecular generation and drug discovery, which is completely unrelated to the reader's interests.",
+   "quote": "formulating target-based drug design as a multi-objective exploration task",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.6053694682800826
+  },
+  {
+   "id": "2611.13755",
+   "score": 0,
+   "theme": "Local and small models",
+   "reason": "This paper is about quantum computing and quantum eigensolvers, which is completely unrelated to the reader's interests.",
+   "quote": "Quantum hardware can provide feedback for training circuit generators",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5973897137678879
+  },
+  {
+   "id": "2611.17722",
+   "score": 0,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper is about federated poly-level optimization and distributed networks, completely unrelated to language model agents or evaluation.",
+   "quote": "propose a Federated Poly-Level Learning (FPLL) framework",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5951037466816442
+  },
+  {
+   "id": "2611.17577",
+   "score": 0,
+   "theme": "LLM agents and evaluation",
+   "reason": "This paper is focused on electric vehicle charging coordination and cryptography, which is unrelated to the reader's interests.",
+   "quote": "",
+   "quote_ok": false,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5932201795212741
+  },
+  {
+   "id": "2611.14811",
+   "score": 0,
+   "theme": "Local and small models",
+   "reason": "This paper is about optimization theory for stochastic gradient descent and has no connection to language models or reader interests.",
+   "quote": "study last-iterate convergence bounds for stochastic gradient descent",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5736746861720273
+  },
+  {
+   "id": "2611.14900",
+   "score": 0,
+   "theme": "AI for games and player data",
+   "reason": "The paper focuses on topological data analysis for graph classification and regression, which is unrelated to the reader's specified themes.",
+   "quote": "topological features from graph data",
+   "quote_ok": true,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5717537767494646
+  },
+  {
+   "id": "2611.17998",
+   "score": 0,
+   "theme": "RAG with evidence",
+   "reason": "This paper addresses electrical power distribution networks and fault diagnosis, making it completely unrelated to machine learning or AI.",
+   "quote": "",
+   "quote_ok": false,
+   "model": "gemini:gemini-3.5-flash-lite",
+   "embed": 0.5665184696514921
+  }
+ ]
+}

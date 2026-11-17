@@ -1,20 +1,16 @@
 """Three rankers over the same papers: keyword baseline, embedding, embedding prefilter + LLM.
 
-Models are reached through Ollama's HTTP API. Tests inject fakes for `embed` and `chat`.
+Models come from `models.py` (Gemini by default). Tests inject fakes for `embed` and `chat`.
 """
 from __future__ import annotations
 
 import json
 import math
-import os
 import re
-import time
 import unicodedata
-import urllib.request
 
-OLLAMA = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
-EMBED_MODEL = os.environ.get("PAPER_RADAR_EMBED_MODEL", "qwen3-embedding:0.6b")
-LLM_MODEL = os.environ.get("PAPER_RADAR_LLM_MODEL", "qwen3.5:9b")
+from . import models
+
 PREFILTER_K = 40
 
 
@@ -65,21 +61,15 @@ def _has(text, kw):
 
 # ---------- embeddings ----------
 
-def ollama_embed(texts: list[str]) -> list[list[float]]:
-    out = []
-    for i in range(0, len(texts), 32):
-        out += _post("/api/embed", {"model": EMBED_MODEL, "input": texts[i:i + 32]})["embeddings"]
-    return out
-
-
 def _cos(a, b):
     dot = sum(x * y for x, y in zip(a, b))
     na, nb = math.sqrt(sum(x * x for x in a)), math.sqrt(sum(y * y for y in b))
     return dot / (na * nb) if na and nb else 0.0
 
 
-def embed_scores(papers, themes, embed=ollama_embed):
+def embed_scores(papers, themes, embed=None):
     """Max cosine between the paper and any theme description; theme = argmax."""
+    embed = embed or models.embed
     tvecs = embed([t["theme"] + ": " + t["text"] for t in themes])
     pvecs = embed([paper_text(p) for p in papers])
     out = []
@@ -95,38 +85,22 @@ def embed_scores(papers, themes, embed=ollama_embed):
 PROMPT = """You rank research papers for one reader. Their interests, one theme per line:
 {themes}
 
-Paper title: {title}
-Abstract: {abstract}
-
-Rate how worth reading this paper is for this reader, 0-10:
+Rate each paper below by how worth reading it is for this reader, 0-10:
 0-2 unrelated, 3-4 adjacent topic only, 5-6 partly relevant, 7-8 clearly relevant, 9-10 must read.
-Pick the closest theme. Write one sentence explaining the score, and copy one short
-exact phrase (4-15 words) from the abstract that supports it."""
+For each paper pick the closest theme, write one sentence explaining the score, and copy one
+short exact phrase (4-15 words) from that paper's abstract that supports it.
 
-SCHEMA = {
-    "type": "object",
-    "properties": {
-        "score": {"type": "integer", "minimum": 0, "maximum": 10},
-        "theme": {"type": "string"},
-        "reason": {"type": "string"},
-        "quote": {"type": "string"},
-    },
-    "required": ["score", "theme", "reason", "quote"],
-}
+{papers}
 
-
-def ollama_chat(prompt: str) -> str:
-    r = _post("/api/chat", {
-        "model": LLM_MODEL, "stream": False, "think": False, "format": SCHEMA,
-        "options": {"temperature": 0, "seed": 7},
-        "messages": [{"role": "user", "content": prompt}],
-    })
-    return r["message"]["content"]
+Answer with one JSON object only, no other text:
+{{"results": [{{"id": "<paper id>", "score": <0-10 integer>, "theme": "<theme name>", "reason": "<one sentence>", "quote": "<exact phrase>"}}]}}
+with one entry per paper, in the same order."""
+BATCH = 8  # papers per LLM request (free-tier quotas count requests, not tokens)
 
 
 def _norm(s: str) -> str:
     s = unicodedata.normalize("NFKC", s).lower()
-    s = s.translate(str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"', "–": "-", "—": "-"}))
+    s = s.translate(str.maketrans({"\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"', "\u2013": "-", "\u2014": "-"}))
     s = re.sub(r"[\"'`]", "", s)
     return " ".join(s.split()).strip(" .,;:")
 
@@ -136,30 +110,61 @@ def quote_verified(quote: str, abstract: str) -> bool:
     return len(q.split()) >= 3 and q in _norm(abstract)
 
 
-def llm_judge(paper, themes, chat=ollama_chat) -> dict:
-    names = [t["theme"] for t in themes]
-    prompt = PROMPT.format(
-        themes="\n".join(f"- {t['theme']}: {t['text']}" for t in themes),
-        title=paper["title"], abstract=paper["abstract"])
+def parse_json(text: str):
+    """The JSON value in a model reply, ignoring <thought> blocks, code fences and chatter."""
+    text = re.sub(r"<thought>.*?</thought>", "", text, flags=re.S)
+    starts = [i for i in (text.find("{"), text.find("[")) if i >= 0]
+    if not starts:
+        return json.loads(text)
+    a = min(starts)
+    b = text.rfind("}" if text[a] == "{" else "]")
+    return json.loads(text[a:b + 1])
+
+
+def _results(value) -> list:
+    """Accept {"results": [...]}, a bare list, or a single object."""
+    if isinstance(value, list):
+        return value
+    if isinstance(value, dict):
+        return value.get("results", [value])
+    return []
+
+
+def _one(paper, d, names, model):
     try:
-        d = json.loads(chat(prompt))
         score = max(0, min(10, int(d["score"])))
     except (ValueError, KeyError, TypeError):
         return {"id": paper["id"], "score": 0, "theme": names[0], "reason": "", "quote": "",
-                "quote_ok": False, "error": "unparseable model output"}
-    theme = d.get("theme", "")
+                "quote_ok": False, "model": model, "error": "unparseable model output"}
+    theme = str(d.get("theme", ""))
     if theme not in names:  # tolerate "Tool use" for "Tool use and MCP" etc.
         t = _norm(theme)
         theme = next((n for n in names if t and (t in _norm(n) or _norm(n) in t)), names[0])
     quote = str(d.get("quote", "")).strip().strip('"')
     ok = quote_verified(quote, paper["abstract"])
-    return {"id": paper["id"], "score": score, "theme": theme,
-            "reason": str(d.get("reason", "")).strip(),
-            "quote": quote if ok else "", "quote_ok": ok}
+    return {"id": paper["id"], "score": score, "theme": theme, "reason": str(d.get("reason", "")).strip(),
+            "quote": quote if ok else "", "quote_ok": ok, "model": model}
 
 
-def llm_rank(papers, themes, embedded, k=PREFILTER_K, chat=ollama_chat, log=lambda *_: None):
-    """Prefilter to the top-k by embedding score, then LLM-score those.
+def llm_judge_batch(papers, themes, chat=None) -> list[dict]:
+    """Score several papers in one request. `chat(prompt)` returns text or (text, model)."""
+    chat = chat or models.chat
+    names = [t["theme"] for t in themes]
+    prompt = PROMPT.format(
+        themes="\n".join(f"- {t['theme']}: {t['text']}" for t in themes),
+        papers="\n\n".join(f"Paper id: {p['id']}\nTitle: {p['title']}\nAbstract: {p['abstract']}" for p in papers))
+    reply = chat(prompt)
+    text, model = reply if isinstance(reply, tuple) else (reply, "")
+    try:
+        results = _results(parse_json(text))
+        by_id = {str(r.get("id", "")).strip(): r for r in results if isinstance(r, dict)}
+    except (ValueError, KeyError, TypeError, AttributeError):
+        by_id = {}
+    return [_one(p, by_id.get(p["id"], {}), names, model) for p in papers]
+
+
+def llm_rank(papers, themes, embedded, k=PREFILTER_K, chat=None, log=lambda *_: None):
+    """Prefilter to the top-k by embedding score, then LLM-score those in batches.
 
     Returns all papers: LLM-scored ones first (by LLM score, ties broken by embedding
     score then id), then the rest in embedding order with score None.
@@ -167,11 +172,12 @@ def llm_rank(papers, themes, embedded, k=PREFILTER_K, chat=ollama_chat, log=lamb
     emb = {e["id"]: e for e in embedded}
     by_emb = sorted(papers, key=lambda p: (-emb[p["id"]]["score"], p["id"]))
     judged = []
-    for i, p in enumerate(by_emb[:k]):
-        j = llm_judge(p, themes, chat)
-        j["embed"] = emb[p["id"]]["score"]
-        judged.append(j)
-        log(f"llm {i + 1}/{min(k, len(by_emb))} {j['score']} {p['title'][:60]}")
+    for i in range(0, min(k, len(by_emb)), BATCH):
+        batch = by_emb[i:min(i + BATCH, k)]
+        for j in llm_judge_batch(batch, themes, chat):
+            j["embed"] = emb[j["id"]]["score"]
+            judged.append(j)
+        log(f"llm {len(judged)}/{min(k, len(by_emb))} scored")
     judged.sort(key=lambda j: (-j["score"], -j["embed"], j["id"]))
     rest = [{"id": p["id"], "score": None, "theme": emb[p["id"]]["theme"], "embed": emb[p["id"]]["score"]}
             for p in by_emb[k:]]
@@ -181,28 +187,3 @@ def llm_rank(papers, themes, embedded, k=PREFILTER_K, chat=ollama_chat, log=lamb
 def order(scored) -> list[str]:
     """Ids by descending score, ties broken by id (for the baselines)."""
     return [s["id"] for s in sorted(scored, key=lambda s: (-s["score"], s["id"]))]
-
-
-def model_digests() -> dict:
-    """{model: digest} for the embed and LLM models, so results record exactly what ran."""
-    try:
-        req = urllib.request.Request(OLLAMA + "/api/tags")
-        with urllib.request.urlopen(req, timeout=30) as r:
-            tags = json.loads(r.read())["models"]
-    except OSError:
-        return {}
-    return {m["name"]: m["digest"] for m in tags if m["name"] in (EMBED_MODEL, LLM_MODEL)}
-
-
-def _post(path, body, retries=4):
-    """POST to Ollama, retrying on timeouts/errors (a shared Ollama can be busy)."""
-    req = urllib.request.Request(OLLAMA + path, data=json.dumps(body).encode(),
-                                 headers={"Content-Type": "application/json"})
-    for attempt in range(retries):
-        try:
-            with urllib.request.urlopen(req, timeout=300) as r:
-                return json.loads(r.read())
-        except OSError:
-            if attempt == retries - 1:
-                raise
-            time.sleep(10 * 2 ** attempt)

@@ -1,4 +1,5 @@
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -76,25 +77,39 @@ class TestRank(unittest.TestCase):
         self.assertFalse(rank.quote_verified("a benchmark of 5,000 tool calls", ab))
         self.assertFalse(rank.quote_verified("benchmark", ab))  # too short to count as grounding
 
-    def test_llm_judge_drops_fabricated_quote(self):
-        p = P("1", "T", "Agents are evaluated on long tasks.")
-        chat = lambda _: json.dumps({"score": 8, "theme": "Tool use", "reason": "r", "quote": "agents beat humans easily"})
-        j = rank.llm_judge(p, PROFILE, chat)
-        self.assertEqual((j["score"], j["quote"], j["quote_ok"]), (8, "", False))
-        self.assertEqual(j["theme"], "Tool use and MCP")
+    def test_llm_batch_drops_fabricated_quote_and_maps_theme(self):
+        papers = [P("1", "T", "Agents are evaluated on long tasks."), P("2", "U", "We fold proteins quickly.")]
+        reply = '<thought>let me think {"x": 1}</thought>```json\n' + json.dumps({"results": [
+            {"id": "1", "score": 8, "theme": "Tool use", "reason": "r", "quote": "agents beat humans easily"},
+            {"id": "2", "score": 1, "theme": "RAG with evidence", "reason": "no", "quote": "We fold proteins quickly"}]}) + "\n```"
+        j1, j2 = rank.llm_judge_batch(papers, PROFILE, lambda _: (reply, "gemini:m"))
+        self.assertEqual((j1["score"], j1["quote"], j1["quote_ok"], j1["model"]), (8, "", False, "gemini:m"))
+        self.assertEqual(j1["theme"], "Tool use and MCP")
+        self.assertTrue(j2["quote_ok"])
 
-    def test_llm_judge_bad_output(self):
-        j = rank.llm_judge(P("1", "T", "a b c"), PROFILE, lambda _: "not json")
-        self.assertEqual(j["score"], 0)
-        self.assertIn("error", j)
+    def test_llm_batch_accepts_bare_list(self):
+        reply = json.dumps([{"id": "1", "score": 6, "theme": "RAG with evidence", "reason": "r", "quote": ""}])
+        (j,) = rank.llm_judge_batch([P("1", "T", "a b c")], PROFILE, lambda _: reply)
+        self.assertEqual((j["score"], j["theme"]), (6, "RAG with evidence"))
 
-    def test_llm_rank_prefilter_and_tiebreak(self):
-        papers = [P(str(i), f"t{i}", "a b c d") for i in range(5)]
-        emb = [{"id": str(i), "score": i / 10, "theme": PROFILE[0]["theme"]} for i in range(5)]
-        chat = lambda _: json.dumps({"score": 7, "theme": "x", "reason": "r", "quote": ""})
-        r = rank.llm_rank(papers, PROFILE, emb, k=3, chat=chat)
-        self.assertEqual([x["id"] for x in r], ["4", "3", "2", "1", "0"])  # ties -> embedding order
-        self.assertEqual([x["score"] for x in r], [7, 7, 7, None, None])
+    def test_llm_batch_bad_output(self):
+        js = rank.llm_judge_batch([P("1", "T", "a b c"), P("2", "T", "d e f")], PROFILE, lambda _: "not json")
+        self.assertEqual([j["score"] for j in js], [0, 0])
+        self.assertIn("error", js[0])
+
+    def test_llm_rank_prefilter_batches_and_tiebreak(self):
+        papers = [P(str(i), f"t{i}", "a b c d") for i in range(12)]
+        emb = [{"id": str(i), "score": i / 100, "theme": PROFILE[0]["theme"]} for i in range(12)]
+        prompts = []
+
+        def chat(prompt):
+            prompts.append(prompt)
+            ids = re.findall(r"Paper id: (\S+)", prompt)
+            return json.dumps({"results": [{"id": i, "score": 7, "theme": "x", "reason": "r", "quote": ""} for i in ids]})
+        r = rank.llm_rank(papers, PROFILE, emb, k=10, chat=chat)
+        self.assertEqual(len(prompts), 2)  # 10 papers in batches of 8
+        self.assertEqual([x["id"] for x in r[:3]], ["11", "10", "9"])  # ties -> embedding order
+        self.assertEqual([x["score"] for x in r[9:]], [7, None, None])
 
 
 class TestEvalAndDigest(unittest.TestCase):
@@ -142,3 +157,25 @@ class TestEvalAndDigest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestModels(unittest.TestCase):
+    def test_fallback_and_cache(self):
+        import tempfile
+        from paper_radar import models
+        calls = []
+
+        def fake_post(provider, path, body):
+            calls.append(body["model"])
+            if body["model"] == "a":
+                raise models.Unavailable("HTTP 429")
+            return {"choices": [{"message": {"content": '{"results": []}'}}], "usage": {"prompt_tokens": 5}}
+        saved = (models._post, models.LLM_MODELS, models.CACHE)
+        try:
+            models._post, models.LLM_MODELS = fake_post, ["a", "b"]
+            models.CACHE = tempfile.mkdtemp()
+            self.assertEqual(models.chat("p"), ('{"results": []}', f"{models.LLM}:b"))
+            self.assertEqual(models.chat("p")[1], f"{models.LLM}:b")  # second call served from cache
+            self.assertEqual(calls, ["a", "b"])
+        finally:
+            models._post, models.LLM_MODELS, models.CACHE = saved
