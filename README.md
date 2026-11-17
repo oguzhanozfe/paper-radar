@@ -6,11 +6,13 @@ profile by embedding similarity, has an LLM score those with a one-sentence reas
 the phrase it quotes really is in the abstract, and writes a Markdown and an email-ready HTML
 digest grouped by theme.
 
-The latest real digest is [`digests/2026-W47.md`](digests/2026-W47.md) ([HTML](digests/2026-W47.html)).
+Real output: [`digests/2026-11-13.md`](digests/2026-11-13.md) ([HTML](digests/2026-11-13.html)), built
+from the 254 papers submitted on 2026-11-13. It covers one day rather than a full week because the
+free-tier embedding quota ran out; see Known limits.
 
 ## Why
 
-Roughly 1,200 papers a week land in cs.CL/AI/LG/MA/HC through the API. Keyword alerts drown
+A one-week query for cs.CL/AI/LG/MA/HC returned 1,226 papers from the API. Keyword alerts drown
 you, and an unchecked LLM summary will invent supporting evidence. paper-radar keeps three things
 honest:
 
@@ -19,8 +21,8 @@ honest:
 - **Grounded reasons.** The model must quote 4–15 words from the abstract. A quote that isn't found
   verbatim (after normalising whitespace, case and curly quotes) is dropped, and the reason is
   shown without it.
-- **Cheap to run.** Free-tier cloud models, 8 abstracts per LLM request, and every model reply
-  cached on disk by input hash, so a rerun costs no requests.
+- **Cheap to run.** Free-tier cloud models, 8 abstracts per LLM request, and every model reply and
+  embedding cached on disk by input hash, so a rerun costs no requests.
 
 ## How it works
 
@@ -51,13 +53,13 @@ arXiv API ──► week of papers ──► embedding similarity to each profil
 Python 3.10+, standard library only.
 
 ```bash
-export GEMINI_API_KEY=...          # free tier is enough
+export GEMINI_API_KEY=...          # free tier: see the embedding quota note below
 python -m paper_radar fetch --out data/week-pool.jsonl          # last 7 days, default categories
 python -m paper_radar digest --pool data/week-pool.jsonl        # writes digests/<year>-W<week>.md/.html
 ```
 
 To fetch and build in one step, omit `--pool`. Options: `--days`,
-`--categories cs.CL,cs.AI`, `--top 15`, `--k 64`, `--profile my-profile.md`.
+`--categories cs.CL,cs.AI`, `--top 15`, `--k 64`, `--profile my-profile.md`, `--name`.
 
 Backends (keys are read from the environment only):
 
@@ -82,7 +84,8 @@ python -m unittest discover -s tests -t .
 [`.github/workflows/weekly-digest.yml`](.github/workflows/weekly-digest.yml) builds the digest and
 commits it to `digests/`. It runs only when started by hand from the Actions tab. To schedule it,
 uncomment the `schedule:` block (Mondays 06:00 UTC). It needs a `GEMINI_API_KEY` repository
-secret. With `PAPER_RADAR_LLM=ollama` it needs a self-hosted runner instead.
+secret. On the free tier a full week won't fit the embedding quota, so narrow `--days` or the
+categories, use a paid key, or use a self-hosted runner with Ollama (`PAPER_RADAR_EMBED=ollama`).
 
 ## Measured results
 
@@ -135,13 +138,21 @@ so differences of that size are noise.
 - **Small sample.** 100 papers and 14 positives: treat the table as a sanity check, not a benchmark.
 - **One week.** The 7-day query on 2026-11-17 returned 1,226 papers, all submitted
   2026-11-10 to 2026-11-13. Later submissions were not in the API's index yet when it ran.
-- **Free-tier quotas** shape the design: about 100 embedding texts per minute, and a small daily
-  request budget per chat model. A full week takes about 15 minutes of paced embedding calls on the
-  first run, and seconds once cached. The LLM model can differ between batches when the fallback
-  kicks in. Each result records the model that scored it.
+- **Free-tier quotas.** Gemini's free tier counted every embedded text as one request: 100 a
+  minute and 1,000 a day per embedding model, shared by every project on the same key. A
+  five-category week is about 1,230 texts, so it does not fit in one day. On 2026-11-17 the daily
+  quota for both `gemini-embedding-001` and `gemini-embedding-2` ran out, and the local Ollama
+  backend was too busy to answer within 10 minutes. The committed digest therefore covers one
+  submission day: 254 papers, all embedded with `gemini-embedding-001`, the same embedder as the
+  eval. Ways around this: a paid key, `PAPER_RADAR_EMBED=ollama` on an idle machine, or fewer
+  `--days` or categories. Embeddings are cached, so a run that stops on the quota resumes where it
+  stopped. The chat model can differ between batches when the fallback kicks in, and each result
+  records which model scored it.
 - **Code detection** only sees GitHub links in the abstract or the arXiv comment. A link that exists
   only in the PDF is missed. Abstracts that say "code will be released" without a link are flagged
   `code_hint` but not linked.
+- **Ollama backend** is wired up and covered by the same code paths, but none of the committed
+  results used it: the shared local Ollama was saturated during this build.
 - **Quote check** proves the quote exists in the abstract. It does not prove the reason is right.
 
 ## Data and terms

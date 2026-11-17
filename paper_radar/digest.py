@@ -44,7 +44,7 @@ def markdown(title, top, close, themes, stats) -> str:
             out.append(f"- [{_md_escape(p['title'])}]({p['url']}) — {p['score']}/10, {p['theme']}: {_md_escape(p['reason'])}")
         out.append("")
     out += ["---", "Thank you to arXiv for use of its open access interoperability. "
-            "Reasons are written by a local LLM; quotes are shown only when found verbatim in the abstract.", ""]
+            "Reasons are written by the LLM named above; quotes are shown only when found verbatim in the abstract.", ""]
     return "\n".join(out)
 
 
@@ -70,7 +70,7 @@ def html(title, top, close, themes, stats) -> str:
                         f' <span style="color:#888;font-size:12px">{p["score"]}/10 · {e(p["theme"])}</span><br>{e(p["reason"])}</li>')
         body.append("</ul>")
     body.append('<p style="color:#888;font-size:12px;margin-top:28px">Thank you to arXiv for use of its open access interoperability. '
-                'Reasons are written by a local LLM; quotes are shown only when found verbatim in the abstract.</p>')
+                'Reasons are written by the LLM named above; quotes are shown only when found verbatim in the abstract.</p>')
     return ('<!doctype html><html><head><meta charset="utf-8"><title>' + e(title) + '</title></head>'
             '<body style="margin:0;background:#f6f6f6"><div style="max-width:680px;margin:0 auto;background:#fff;'
             'padding:24px;font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:1.45;color:#222">'

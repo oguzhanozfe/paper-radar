@@ -19,7 +19,7 @@ import time
 import urllib.error
 import urllib.request
 
-OLLAMA = os.environ.get("OLLAMA_HOST", "http://127.0.0.1:11434").rstrip("/")
+OLLAMA = (os.environ.get("OLLAMA_HOST") or "http://127.0.0.1:11434").rstrip("/")
 PROVIDERS = {
     # name: (OpenAI-compatible base URL, key env var, default chat model, default embed model)
     "gemini": ("https://generativelanguage.googleapis.com/v1beta/openai", "GEMINI_API_KEY",
@@ -43,12 +43,13 @@ def describe() -> dict:
     return {"llm_models": f"{LLM}:{','.join(LLM_MODELS)}", "embed_model": f"{EMBED}:{EMBED_MODEL}"}
 
 
-def embed(texts: list[str], batch: int = 90) -> list[list[float]]:
+def embed(texts: list[str], batch: int | None = None) -> list[list[float]]:
     """Embeddings, cached on disk per model and text hash.
 
     Gemini's free tier counts every text as one request (100/minute), so batches are
     paced a minute apart and the cache is saved after each batch.
     """
+    batch = batch or (90 if EMBED == "gemini" else 16)
     path = os.path.join(CACHE, "..", f"embed-{EMBED}-{EMBED_MODEL.replace('/', '_')}.json")
     cache = {}
     if os.path.exists(path):
@@ -118,13 +119,16 @@ def _post(provider: str, path: str, body: dict, retries: int = 4) -> dict:
     req = urllib.request.Request(base + path, data=json.dumps(body).encode(), headers=headers)
     for attempt in range(retries):
         try:
-            with urllib.request.urlopen(req, timeout=120) as r:
+            with urllib.request.urlopen(req, timeout=600 if provider == "ollama" else 120) as r:
                 return json.loads(r.read())
         except urllib.error.HTTPError as e:
             msg = e.read().decode("utf-8", "replace")
             # a daily quota will not recover by waiting; an overloaded model may not either
-            if e.code == 429 and "PerDay" in msg or e.code == 503 and attempt >= 1:
-                raise Unavailable(f"HTTP {e.code}") from None
+            if e.code == 429 and "per day" in msg.lower() and path == "/embeddings":
+                raise SystemExit(f"{provider} daily embedding quota used up. Embedded texts so far are cached; "
+                                 "rerun tomorrow, or set PAPER_RADAR_EMBED=ollama, or use fewer --days/--categories.")
+            if e.code == 429 and ("PerDay" in msg or "per day" in msg.lower()) or e.code == 503 and attempt >= 1:
+                raise Unavailable(f"HTTP {e.code} (daily quota)" if e.code == 429 else f"HTTP {e.code}") from None
             if e.code not in (429, 500, 502, 503, 504) or attempt == retries - 1:
                 raise (Unavailable if e.code in (429, 503) else RuntimeError)(f"{provider} {path}: HTTP {e.code}") from None
             # per-minute limits say how long to wait ("Please retry in 33.4s"); otherwise back off

@@ -54,10 +54,11 @@ def cmd_digest(a):
     top, close = digest.select(ranked, by_id, top_n=a.top)
     now = datetime.now(timezone.utc)
     year, week, _ = now.isocalendar()
-    name = f"{year}-W{week:02d}"
+    name = a.name or f"{year}-W{week:02d}"
     judged = [r for r in ranked if r.get("score") is not None]
     quotes = sum(r["quote_ok"] for r in judged)
-    stats = (f"Week {name}: {len(papers)} new arXiv papers in {', '.join(sorted({c for p in papers for c in p['categories'] if c in a.categories.split(',')}))}; "
+    days = sorted(p["published"][:10] for p in papers)
+    stats = (f"{name}: {len(papers)} arXiv papers submitted {days[0]} to {days[-1]} in {', '.join(sorted({c for p in papers for c in p['categories'] if c in a.categories.split(',')}))}; "
              f"top {a.k} by embedding ({models.EMBED_MODEL}) re-scored by {', '.join(sorted({j['model'] for j in judged}))}; {len(top)} made the cut. "
              f"Quotes verified verbatim: {quotes}/{len(judged)}.")
     out = Path(a.out_dir)
@@ -141,6 +142,7 @@ def main(argv=None):
     d.add_argument("--top", type=int, default=15)
     d.add_argument("--k", type=int, default=64, help="papers re-scored by the LLM after the embedding prefilter")
     d.add_argument("--out-dir", default="digests")
+    d.add_argument("--name", help="output file name (default: ISO week, e.g. 2026-W47)")
     d.set_defaults(fn=cmd_digest)
 
     s = sub.add_parser("eval-sample")

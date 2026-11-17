@@ -2,10 +2,10 @@
 # Disabled by default: it only runs when started by hand (Actions tab -> Run workflow).
 # To schedule it, uncomment the `schedule:` block.
 #
-# It needs an Ollama endpoint with the embedding and chat models. GitHub-hosted
-# runners have none, so either use a self-hosted runner that runs Ollama
-# (set `runs-on: self-hosted`) or point OLLAMA_HOST at a server you control
-# via a repository secret.
+# Needs a GEMINI_API_KEY repository secret. Gemini's free tier embeds at most 1,000 texts
+# a day, and a full week across the five default categories is ~1,200+ papers, so on the
+# free tier either narrow the run (e.g. `--days 3` or fewer categories), use a paid key,
+# or run on a self-hosted runner with Ollama (PAPER_RADAR_EMBED=ollama, OLLAMA_HOST).
 name: Weekly digest
 on:
   workflow_dispatch:
@@ -15,9 +15,11 @@ permissions:
   contents: write
 jobs:
   digest:
-    runs-on: ubuntu-latest   # change to self-hosted if Ollama runs there
+    runs-on: ubuntu-latest   # or self-hosted with Ollama
     env:
-      OLLAMA_HOST: ${{ secrets.OLLAMA_HOST }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      PAPER_RADAR_EMBED: ${{ vars.PAPER_RADAR_EMBED || 'gemini' }}
+      OLLAMA_HOST: ${{ vars.OLLAMA_HOST }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
