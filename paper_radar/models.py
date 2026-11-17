@@ -43,8 +43,12 @@ def describe() -> dict:
     return {"llm_models": f"{LLM}:{','.join(LLM_MODELS)}", "embed_model": f"{EMBED}:{EMBED_MODEL}"}
 
 
-def embed(texts: list[str], batch: int = 100) -> list[list[float]]:
-    """Embeddings, cached on disk per model and text hash."""
+def embed(texts: list[str], batch: int = 90) -> list[list[float]]:
+    """Embeddings, cached on disk per model and text hash.
+
+    Gemini's free tier counts every text as one request (100/minute), so batches are
+    paced a minute apart and the cache is saved after each batch.
+    """
     path = os.path.join(CACHE, "..", f"embed-{EMBED}-{EMBED_MODEL.replace('/', '_')}.json")
     cache = {}
     if os.path.exists(path):
@@ -53,13 +57,14 @@ def embed(texts: list[str], batch: int = 100) -> list[list[float]]:
     keys = [hashlib.sha256(t.encode()).hexdigest() for t in texts]
     todo = [(k, t) for k, t in dict(zip(keys, texts)).items() if k not in cache]
     for i in range(0, len(todo), batch):
+        if i and EMBED == "gemini":
+            time.sleep(61)
         chunk = todo[i:i + batch]
         r = _post(EMBED, "/embeddings", {"model": EMBED_MODEL, "input": [t for _, t in chunk]})
         vecs = [d["embedding"] for d in sorted(r["data"], key=lambda d: d.get("index", 0))]  # stable sort keeps order
         cache.update({k: v for (k, _), v in zip(chunk, vecs)})
         usage["embed_calls"] += 1
         usage["embedded_texts"] += len(chunk)
-    if todo:
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w", encoding="utf-8") as f:
             json.dump(cache, f)
